@@ -1,0 +1,21 @@
+:root[data-theme='dark'] {
+  /* Backgrounds */
+  --color-bg-primary: var(--color-gray-900);
+  --color-bg-secondary: var(--color-gray-800);
+  --color-bg-tertiary: var(--color-gray-700);
+  --color-bg-inverse: var(--color-white);
+
+  /* Text */
+  --color-text-primary: var(--color-gray-100);
+  --color-text-secondary: var(--color-gray-300);
+  --color-text-tertiary: var(--color-gray-400);
+  --color-text-inverse: var(--color-gray-900);
+  --color-text-link: var(--color-gradient-start);
+  --color-text-link-hover: var(--color-primary);
+
+  /* Borders */
+  --color-border-primary: var(--color-gray-700);
+  --color-border-secondary: var(--color-gray-600);
+  --color-border-focus: var(--color-primary);
+}
+

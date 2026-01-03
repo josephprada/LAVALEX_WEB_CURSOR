@@ -1,0 +1,193 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: center;
+}
+
+.textContent {
+  z-index: 1;
+}
+
+.title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-white);
+}
+
+.subtitle {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-2xl);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  flex: 1;
+  min-width: 200px;
+}
+
+.illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.washingMachine {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drum {
+  width: 300px;
+  height: 300px;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-full);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.water {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(55, 167, 223, 0.6), rgba(0, 128, 181, 0.8));
+  border-radius: var(--border-radius-full);
+  animation: swirl 8s linear infinite;
+}
+
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.bubbles span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius-full);
+  animation: bubble 3s ease-in-out infinite;
+}
+
+.bubbles span:nth-child(1) {
+  top: 30%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.bubbles span:nth-child(2) {
+  top: 60%;
+  right: 25%;
+  animation-delay: 1s;
+  width: 15px;
+  height: 15px;
+}
+
+.bubbles span:nth-child(3) {
+  bottom: 25%;
+  left: 50%;
+  animation-delay: 2s;
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes bubble {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.control {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .illustration {
+    order: -1;
+  }
+
+  .washingMachine {
+    width: 300px;
+    height: 400px;
+  }
+
+  .drum {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+}
+
