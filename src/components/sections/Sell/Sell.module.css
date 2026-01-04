@@ -1,5 +1,5 @@
 .sell {
-  padding-top: calc(var(--spacing-xl) + 80px);
+  padding-top: 20px;
   position: relative !important;
   background: none !important;
   background-color: transparent !important;
@@ -188,6 +188,23 @@
 }
 
 @media (max-width: 768px) {
+  .sell {
+    padding-top: 20px;
+  }
+
+  .sell::before {
+    display: none;
+  }
+
+  .backgroundWrapper {
+    width: 100% !important;
+    background-position: center center !important;
+  }
+
+  .backgroundWrapper::before {
+    display: none;
+  }
+
   .title {
     font-size: var(--font-size-3xl);
   }

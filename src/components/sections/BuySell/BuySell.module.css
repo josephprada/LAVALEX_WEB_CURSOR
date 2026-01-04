@@ -1,5 +1,5 @@
 .buySell {
-  padding-top: calc(var(--spacing-xl) + 80px);
+  padding-top: 20px;
 }
 
 .header {
@@ -155,6 +155,10 @@
 }
 
 @media (max-width: 768px) {
+  .buySell {
+    padding-top: 20px;
+  }
+
   .title {
     font-size: var(--font-size-3xl);
   }
