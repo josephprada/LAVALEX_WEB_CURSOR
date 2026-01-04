@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useScroll } from '../../../hooks/useScroll'
 import { NAVIGATION_ITEMS } from '../../../constants'
+import GradientText from 'react-bits/src/content/TextAnimations/GradientText/GradientText'
 import styles from './Header.module.css'
 import { Container } from '../Container/Container'
 import logoIcon from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
@@ -35,7 +36,9 @@ export const Header = () => {
             <div className={styles.content}>
               <div className={styles.logo} onClick={() => handleNavClick('#inicio')}>
                 <img src={logoIcon} alt="LAVALEX Logo" className={styles.logoIcon} />
-                <span className={styles.logoText}>LAVALEX</span>
+                <span className={styles.logoText}>
+                  <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
+                </span>
               </div>
 
               <nav className={styles.nav}>

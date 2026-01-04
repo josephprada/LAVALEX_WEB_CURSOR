@@ -1,4 +1,5 @@
 import { FaFacebook, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
+import GradientText from 'react-bits/src/content/TextAnimations/GradientText/GradientText'
 import { Container } from '../Container/Container'
 import styles from './Footer.module.css'
 
@@ -10,7 +11,9 @@ export const Footer = () => {
       <Container>
         <div className={styles.content}>
           <div className={styles.section}>
-            <h3 className={styles.companyTitle}>LAVALEX</h3>
+            <h3 className={styles.companyTitle}>
+              <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
+            </h3>
             <p className={styles.description}>
               Soluciones integrales para el lavado en el hogar. Compra, venta y servicio técnico de confianza.
             </p>

@@ -1,6 +1,8 @@
 import { Button } from '../../ui/Button/Button'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
+import SplitText from 'react-bits/src/content/TextAnimations/SplitText/SplitText'
+import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
 import logoWashingMachine from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
 import styles from './Hero.module.css'
 
@@ -35,48 +37,58 @@ export const Hero = () => {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <h1 className={styles.title}>
-              COMPRA Y VENTA DE LAVADORAS AUTOMÁTICAS
+              <SplitText text="COMPRA Y VENTA DE LAVADORAS AUTOMÁTICAS" className={styles.title} />
             </h1>
-            <p className={styles.subtitle}>
-                Compra, venta, reparación y mantenimiento en Bucaramanga. Calidad garantizada y atención inmediata a domicilio.
-            </p>
+            <AnimatedContent delay={0.15} direction="vertical" distance={30}>
+              <p className={styles.subtitle}>
+                  Compra, venta, reparación y mantenimiento en Bucaramanga. Calidad garantizada y atención inmediata a domicilio.
+              </p>
+            </AnimatedContent>
             <div className={styles.ctaGroup}>
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={() => scrollToSection('#venta')}
-                className={styles.ctaButton}
-              >
-                COMPRAR
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => scrollToSection('#compra')}
-                className={styles.ctaButton}
-              >
-                VENDER
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => scrollToSection('#reparacion')}
-                className={styles.ctaButton}
-              >
-                <span className={styles.buttonText}>
-                  REPARACIÓN<br />MANTENIMIENTO
-                </span>
-              </Button>
+              <AnimatedContent delay={0.1} direction="vertical" distance={50}>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => scrollToSection('#venta')}
+                  className={styles.ctaButton}
+                >
+                  COMPRAR
+                </Button>
+              </AnimatedContent>
+              <AnimatedContent delay={0.2} direction="vertical" distance={50}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => scrollToSection('#compra')}
+                  className={styles.ctaButton}
+                >
+                  VENDER
+                </Button>
+              </AnimatedContent>
+              <AnimatedContent delay={0.3} direction="vertical" distance={50}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => scrollToSection('#reparacion')}
+                  className={styles.ctaButton}
+                >
+                  <span className={styles.buttonText}>
+                    REPARACIÓN<br />MANTENIMIENTO
+                  </span>
+                </Button>
+              </AnimatedContent>
             </div>
           </div>
           <div className={styles.illustration}>
-            <div className={styles.washingMachine}>
-              <img
-                src={logoWashingMachine}
-                alt="Lavadora LAVALEX"
-                className={styles.logoImage}
-              />
-            </div>
+            <AnimatedContent delay={0.2} direction="horizontal" distance={100}>
+              <div className={styles.washingMachine}>
+                <img
+                  src={logoWashingMachine}
+                  alt="Lavadora LAVALEX"
+                  className={styles.logoImage}
+                />
+              </div>
+            </AnimatedContent>
           </div>
         </div>
       </Container>

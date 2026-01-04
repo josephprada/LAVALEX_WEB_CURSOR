@@ -1,6 +1,8 @@
 import { Card } from '../../ui/Card/Card'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
+import BlurText from 'react-bits/src/content/TextAnimations/BlurText/BlurText'
+import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeContent'
 import { SERVICES } from '../../../constants'
 import styles from './RepairMaintenance.module.css'
 
@@ -10,10 +12,14 @@ export const RepairMaintenance = () => {
     <Section id="reparacion" variant="secondary" className={styles.repairMaintenance}>
       <Container>
         <div className={styles.header}>
-          <h2 className={styles.title}>Reparación y Mantenimiento</h2>
-          <p className={styles.description}>
-            Ofrecemos servicios profesionales de reparación y mantenimiento para todas las marcas y modelos de lavadoras automáticas.
-          </p>
+          <h2 className={styles.title}>
+            <BlurText text="Reparación y Mantenimiento" className={styles.title} />
+          </h2>
+          <FadeContent delay={0.2}>
+            <p className={styles.description}>
+              Ofrecemos servicios profesionales de reparación y mantenimiento para todas las marcas y modelos de lavadoras automáticas.
+            </p>
+          </FadeContent>
         </div>
 
         <div className={styles.servicesGrid}>

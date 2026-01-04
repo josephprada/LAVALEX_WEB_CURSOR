@@ -4,6 +4,8 @@ import { Card } from '../../ui/Card/Card'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
 import { Modal } from '../../ui/Modal/Modal'
+import BlurText from 'react-bits/src/content/TextAnimations/BlurText/BlurText'
+import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeContent'
 import { WHATSAPP_NUMBER } from '../../../constants'
 import styles from './Sell.module.css'
 
@@ -50,11 +52,15 @@ export const Sell = () => {
       />
       <Container>
         <div className={styles.header}>
-          <h2 className={styles.title}>Lavadoras en Venta</h2>
-          <p className={styles.description}>
-            Vendemos lavadoras reacondicionadas con garantía. Todas nuestras lavadoras pasan por un proceso 
-            de revisión y mantenimiento completo antes de ser puestas a la venta.
-          </p>
+          <h2 className={styles.title}>
+            <BlurText text="Lavadoras en Venta" className={styles.title} />
+          </h2>
+          <FadeContent delay={0.2}>
+            <p className={styles.description}>
+              Vendemos lavadoras reacondicionadas con garantía. Todas nuestras lavadoras pasan por un proceso 
+              de revisión y mantenimiento completo antes de ser puestas a la venta.
+            </p>
+          </FadeContent>
         </div>
 
         <div className={styles.gallery}>

@@ -14,6 +14,9 @@
   margin-bottom: var(--spacing-lg);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .description {

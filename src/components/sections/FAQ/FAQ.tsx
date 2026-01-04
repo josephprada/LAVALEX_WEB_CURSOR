@@ -1,6 +1,8 @@
 import { Accordion } from '../../ui/Accordion/Accordion'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
+import BlurText from 'react-bits/src/content/TextAnimations/BlurText/BlurText'
+import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeContent'
 import { FAQ_ITEMS } from '../../../constants'
 import styles from './FAQ.module.css'
 
@@ -30,10 +32,14 @@ export const FAQ = () => {
       </div>
       <Container>
         <div className={styles.header}>
-          <h2 className={styles.title}>Preguntas Frecuentes</h2>
-          <p className={styles.description}>
-            Resolvemos las dudas más comunes sobre nuestros servicios de compra, venta, reparación y mantenimiento de lavadoras.
-          </p>
+          <h2 className={styles.title}>
+            <BlurText text="Preguntas Frecuentes" className={styles.title} />
+          </h2>
+          <FadeContent delay={0.2}>
+            <p className={styles.description}>
+              Resolvemos las dudas más comunes sobre nuestros servicios de compra, venta, reparación y mantenimiento de lavadoras.
+            </p>
+          </FadeContent>
         </div>
 
         <div className={styles.accordionContainer}>
