@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Button } from '../../ui/Button/Button'
 import { Input } from '../../ui/Input/Input'
 import { Card } from '../../ui/Card/Card'
@@ -58,28 +57,16 @@ export const BuySell = () => {
   return (
     <Section id="compra-venta" className={styles.buySell}>
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className={styles.header}
-        >
+        <div className={styles.header}>
           <h2 className={styles.title}>Compra y Venta de Lavadoras</h2>
           <p className={styles.description}>
             Compramos lavadoras usadas o dañadas y vendemos lavadoras reacondicionadas con garantía. 
             Contáctanos para conocer más sobre nuestros servicios.
           </p>
-        </motion.div>
+          </div>
 
         <div className={styles.content}>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={styles.formSection}
-          >
+          <div className={styles.formSection}>
             <Card variant="elevated" className={styles.formCard}>
               <h3 className={styles.formTitle}>Solicita Información</h3>
               <form onSubmit={handleSubmit} className={styles.form}>
@@ -140,25 +127,13 @@ export const BuySell = () => {
                 </Button>
               </form>
             </Card>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={styles.gallerySection}
-          >
+          <div className={styles.gallerySection}>
             <h3 className={styles.galleryTitle}>Lavadoras Disponibles</h3>
             <div className={styles.gallery}>
-              {washers.map((washer, index) => (
-                <motion.div
-                  key={washer.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+              {washers.map((washer) => (
+                <div key={washer.id}>
                   <Card variant="elevated" className={styles.washerCard}>
                     <div className={styles.washerImage}>
                       <div className={styles.placeholderImage}>🔄</div>
@@ -172,10 +147,10 @@ export const BuySell = () => {
                       </Button>
                     </div>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </Section>

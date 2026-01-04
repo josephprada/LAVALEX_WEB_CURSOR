@@ -9,5 +9,6 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  assetsInclude: ['**/*.svg'],
 })
 

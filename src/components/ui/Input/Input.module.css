@@ -8,7 +8,7 @@
 .label {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+  color: var(--color-text-bright);
 }
 
 .required {
@@ -22,9 +22,9 @@
   padding: var(--spacing-md);
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
-  border: var(--border-width) solid var(--color-border-primary);
+  color: var(--color-text-bright);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width) solid rgba(0, 191, 255, 0.3);
   border-radius: var(--border-radius-md);
   transition: all var(--transition-base);
   outline: none;
@@ -37,8 +37,8 @@
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--color-border-focus);
-  box-shadow: 0 0 0 3px rgba(0, 128, 181, 0.1);
+  border-color: var(--color-text-bright);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2);
 }
 
 .input::placeholder,

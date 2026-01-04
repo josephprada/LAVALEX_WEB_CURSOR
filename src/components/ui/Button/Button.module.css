@@ -20,37 +20,46 @@
 
 /* Variantes */
 .primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  background: var(--color-text-bright);
   color: var(--color-white);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+  border: none;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-medium));
-  box-shadow: var(--shadow-lg);
+  background: var(--color-primary-dark);
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
   transform: translateY(-2px);
 }
 
 .secondary {
   background-color: var(--color-bg-secondary);
-  color: var(--color-text-primary);
+  color: var(--color-text-bright);
   border-color: var(--color-border-primary);
 }
 
 .secondary:hover:not(:disabled) {
   background-color: var(--color-bg-tertiary);
-  border-color: var(--color-border-secondary);
+  border-color: var(--color-text-bright);
 }
 
 .outline {
   background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-text-bright);
+  border: 2px solid var(--color-text-bright);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .outline:hover:not(:disabled) {
-  background-color: var(--color-primary);
+  background-color: rgba(0, 191, 255, 0.1);
   color: var(--color-white);
+  border-color: var(--color-white);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
 }
 
 .ghost {
@@ -77,8 +86,8 @@
 
 .lg {
   padding: var(--spacing-lg) var(--spacing-xl);
-  font-size: var(--font-size-lg);
-  min-height: 3rem;
+  font-size: 14px;
+  height: 40px;
 }
 
 /* Estados */

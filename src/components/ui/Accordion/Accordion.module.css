@@ -6,10 +6,10 @@
 }
 
 .item {
-  border: var(--border-width) solid var(--color-border-primary);
+  border: var(--border-width) solid rgba(0, 191, 255, 0.3);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .question {
@@ -18,29 +18,29 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-lg);
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-secondary);
   border: none;
   cursor: pointer;
   text-align: left;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+  color: var(--color-text-bright);
   transition: all var(--transition-base);
 }
 
 .question:hover {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-tertiary);
 }
 
 .question.open {
-  background-color: var(--color-bg-secondary);
-  border-bottom: var(--border-width) solid var(--color-border-primary);
+  background-color: var(--color-bg-tertiary);
+  border-bottom: var(--border-width) solid rgba(0, 191, 255, 0.3);
 }
 
 .icon {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--color-text-bright);
   flex-shrink: 0;
   margin-left: var(--spacing-md);
   transition: transform var(--transition-base);
@@ -52,11 +52,12 @@
 
 .answerWrapper {
   overflow: hidden;
+  transition: all var(--transition-base);
 }
 
 .answer {
   padding: var(--spacing-lg);
-  color: var(--color-text-secondary);
+  color: var(--color-text-light);
   line-height: var(--line-height-relaxed);
 }
 

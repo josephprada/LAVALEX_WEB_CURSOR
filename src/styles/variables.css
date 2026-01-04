@@ -1,10 +1,18 @@
 :root {
-  /* Colores de marca LAVALEX */
-  --color-primary: #0080b5;
-  --color-primary-dark: #0b508c;
-  --color-primary-medium: #006c98;
+  /* Colores de marca LAVALEX - Estilo oscuro */
+  --color-primary: #00BFFF;
+  --color-primary-dark: #1E90FF;
+  --color-primary-medium: #0080b5;
+  --color-primary-bright: #00BFFF;
+  --color-secondary: #1E90FF;
   --color-gradient-start: #37a7df;
   --color-gradient-end: #2c3283;
+  
+  /* Colores del nuevo diseño oscuro */
+  --color-bg-dark: #0A1931;
+  --color-text-bright: #00BFFF;
+  --color-text-bright-alt: #1E90FF;
+  --color-text-light: #87CEEB;
 
   /* Colores base */
   --color-white: #ffffff;

@@ -1,12 +1,10 @@
-export const WHATSAPP_NUMBER = '573001234567' // Placeholder - actualizar con número real
+export const WHATSAPP_NUMBER = '57301510520'
 export const WHATSAPP_MESSAGE = 'Hola, me interesa conocer más sobre sus servicios de lavadoras.'
 
 export const NAVIGATION_ITEMS = [
-  { id: 'inicio', label: 'Inicio', href: '#inicio' },
-  { id: 'compra-venta', label: 'Compra y Venta', href: '#compra-venta' },
-  { id: 'reparacion', label: 'Reparación y Mantenimiento', href: '#reparacion' },
-  { id: 'quien-soy', label: 'Quién Soy', href: '#quien-soy' },
-  { id: 'faq', label: 'Preguntas Frecuentes', href: '#faq' },
+  { id: 'compra', label: 'COMPRA', href: '#compra' },
+  { id: 'venta', label: 'VENTA', href: '#venta' },
+  { id: 'reparacion', label: 'REPARACIÓN Y MANTENIMIENTO', href: '#reparacion' },
 ]
 
 export const FAQ_ITEMS = [

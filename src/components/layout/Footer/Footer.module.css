@@ -1,13 +1,13 @@
 .footer {
-  background-color: var(--color-bg-secondary);
-  border-top: var(--border-width) solid var(--color-border-primary);
+  background-color: #0f2442;
+  border-top: var(--border-width) solid rgba(0, 191, 255, 0.3);
   padding: var(--spacing-3xl) 0 var(--spacing-xl);
-  margin-top: var(--spacing-4xl);
+  margin-top: 0;
 }
 
 .content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-2xl);
   margin-bottom: var(--spacing-2xl);
 }
@@ -18,24 +18,50 @@
   gap: var(--spacing-md);
 }
 
-.title {
+.companyTitle {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--color-text-bright);
   margin: 0;
 }
 
 .subtitle {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+  color: var(--color-white);
   margin: 0;
+  margin-bottom: var(--spacing-sm);
 }
 
 .description {
-  color: var(--color-text-secondary);
+  color: var(--color-white);
   line-height: var(--line-height-relaxed);
   margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.contactInfo,
+.scheduleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.contactItem,
+.scheduleItem {
+  color: var(--color-white);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.contactItem {
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.contactItem:hover {
+  color: var(--color-text-bright);
 }
 
 .links {
@@ -45,14 +71,14 @@
 }
 
 .link {
-  color: var(--color-text-secondary);
+  color: var(--color-text-light);
   text-decoration: none;
   transition: color var(--transition-base);
   font-size: var(--font-size-sm);
 }
 
 .link:hover {
-  color: var(--color-primary);
+  color: var(--color-text-bright);
 }
 
 .social {
@@ -66,18 +92,18 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: var(--color-bg-primary);
-  border: var(--border-width) solid var(--color-border-primary);
-  border-radius: var(--border-radius-md);
-  color: var(--color-text-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-white);
+  border-radius: var(--border-radius-full);
+  color: var(--color-white);
   transition: all var(--transition-base);
   font-size: var(--font-size-lg);
 }
 
 .socialLink:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-text-bright);
+  border-color: var(--color-text-bright);
+  color: var(--color-bg-dark);
   transform: translateY(-2px);
 }
 
@@ -91,6 +117,13 @@
   color: var(--color-text-tertiary);
   font-size: var(--font-size-sm);
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
 }
 
 @media (max-width: 768px) {

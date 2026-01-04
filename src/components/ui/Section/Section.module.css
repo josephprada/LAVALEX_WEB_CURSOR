@@ -8,8 +8,8 @@
 }
 
 .primary {
-  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-  color: var(--color-text-inverse);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-bright);
 }
 
 .secondary {
@@ -18,7 +18,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-lg) 0;
   }
 }
 

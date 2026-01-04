@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useScroll } from '../../../hooks/useScroll'
 import { NAVIGATION_ITEMS } from '../../../constants'
 import styles from './Header.module.css'
 import { Container } from '../Container/Container'
+import logoIcon from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
 
 export const Header = () => {
   const { scrollDirection, isScrolled } = useScroll()
@@ -27,18 +27,14 @@ export const Header = () => {
   }
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.header
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          exit={{ y: -100 }}
-          transition={{ duration: 0.3 }}
-          className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
-        >
+    <>
+      <header
+        className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isVisible ? styles.visible : styles.hidden}`}
+      >
           <Container>
             <div className={styles.content}>
               <div className={styles.logo} onClick={() => handleNavClick('#inicio')}>
+                <img src={logoIcon} alt="LAVALEX Logo" className={styles.logoIcon} />
                 <span className={styles.logoText}>LAVALEX</span>
               </div>
 
@@ -72,15 +68,8 @@ export const Header = () => {
               </button>
             </div>
 
-            <AnimatePresence>
-              {isMobileMenuOpen && (
-                <motion.nav
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className={styles.mobileNav}
-                >
+            {isMobileMenuOpen && (
+              <nav className={styles.mobileNav}>
                   {NAVIGATION_ITEMS.map((item) => (
                     <a
                       key={item.id}
@@ -94,13 +83,11 @@ export const Header = () => {
                       {item.label}
                     </a>
                   ))}
-                </motion.nav>
-              )}
-            </AnimatePresence>
+              </nav>
+            )}
           </Container>
-        </motion.header>
-      )}
-    </AnimatePresence>
+        </header>
+    </>
   )
 }
 

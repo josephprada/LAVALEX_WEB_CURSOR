@@ -1,22 +1,22 @@
 :root[data-theme='light'],
 :root:not([data-theme]) {
-  /* Backgrounds */
-  --color-bg-primary: var(--color-white);
-  --color-bg-secondary: var(--color-gray-50);
-  --color-bg-tertiary: var(--color-gray-100);
-  --color-bg-inverse: var(--color-gray-900);
+  /* Backgrounds - Estilo oscuro como default */
+  --color-bg-primary: var(--color-bg-dark);
+  --color-bg-secondary: #0f2442;
+  --color-bg-tertiary: #152d4f;
+  --color-bg-inverse: var(--color-white);
 
-  /* Text */
-  --color-text-primary: var(--color-gray-900);
-  --color-text-secondary: var(--color-gray-700);
-  --color-text-tertiary: var(--color-gray-500);
-  --color-text-inverse: var(--color-white);
-  --color-text-link: var(--color-primary);
-  --color-text-link-hover: var(--color-primary-dark);
+  /* Text - Azul brillante */
+  --color-text-primary: var(--color-text-bright);
+  --color-text-secondary: var(--color-text-light);
+  --color-text-tertiary: #5a9fc7;
+  --color-text-inverse: var(--color-bg-dark);
+  --color-text-link: var(--color-text-bright);
+  --color-text-link-hover: var(--color-primary-bright);
 
   /* Borders */
-  --color-border-primary: var(--color-gray-200);
-  --color-border-secondary: var(--color-gray-300);
-  --color-border-focus: var(--color-primary);
+  --color-border-primary: rgba(0, 191, 255, 0.3);
+  --color-border-secondary: rgba(0, 191, 255, 0.5);
+  --color-border-focus: var(--color-text-bright);
 }
 

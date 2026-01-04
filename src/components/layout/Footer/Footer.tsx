@@ -1,59 +1,44 @@
-import { FaFacebook, FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa'
+import { FaFacebook, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 import { Container } from '../Container/Container'
 import styles from './Footer.module.css'
-import { WHATSAPP_NUMBER } from '../../../constants'
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
-
-  const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')
-  }
 
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.content}>
           <div className={styles.section}>
-            <h3 className={styles.title}>LAVALEX</h3>
+            <h3 className={styles.companyTitle}>LAVALEX</h3>
             <p className={styles.description}>
-              Tu centro de confianza para lavadoras automáticas: compra, venta, reparación y mantenimiento en Bucaramanga.
+              Soluciones integrales para el lavado en el hogar. Compra, venta y servicio técnico de confianza.
             </p>
           </div>
 
           <div className={styles.section}>
-            <h4 className={styles.subtitle}>Enlaces</h4>
-            <nav className={styles.links}>
-              <a href="#inicio" className={styles.link}>Inicio</a>
-              <a href="#compra-venta" className={styles.link}>Compra y Venta</a>
-              <a href="#reparacion" className={styles.link}>Reparación</a>
-              <a href="#quien-soy" className={styles.link}>Quién Soy</a>
-              <a href="#faq" className={styles.link}>FAQ</a>
-            </nav>
-          </div>
-
-          <div className={styles.section}>
-            <h4 className={styles.subtitle}>Legal</h4>
-            <nav className={styles.links}>
-              <a href="/terminos" className={styles.link}>Términos y Condiciones</a>
-              <a href="/privacidad" className={styles.link}>Política de Privacidad</a>
-            </nav>
-          </div>
-
-          <div className={styles.section}>
             <h4 className={styles.subtitle}>Contacto</h4>
+            <div className={styles.contactInfo}>
+              <p className={styles.contactItem}>Bucaramanga, Norte</p>
+              <a href="tel:+57301510520" className={styles.contactItem}>
+                +57 301510520
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.section}>
+            <h4 className={styles.subtitle}>Horarios</h4>
+            <div className={styles.scheduleInfo}>
+              <p className={styles.scheduleItem}>Lunes - Sábado</p>
+              <p className={styles.scheduleItem}>8:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+
+          <div className={styles.section}>
+            <h4 className={styles.subtitle}>Síguenos</h4>
             <div className={styles.social}>
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialLink}
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp />
-              </a>
-              <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/1AkTk8MFnt/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
@@ -62,20 +47,22 @@ export const Footer = () => {
                 <FaFacebook />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.google.com/maps/place/LAVALEX+-+ALQUILER+DE+LAVADORAS/@7.1577195,-73.144522,962m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e6815d6b45ce7e7:0x3d14d673f58d3dd4!8m2!3d7.1577142!4d-73.1419471!16s%2Fg%2F11shv5z4k5?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
-                aria-label="Instagram"
+                aria-label="Google Maps"
               >
-                <FaInstagram />
+                <FaMapMarkerAlt />
               </a>
               <a
-                href="mailto:contacto@lavalex.com"
+                href={`https://wa.me/57301510520`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.socialLink}
-                aria-label="Email"
+                aria-label="WhatsApp"
               >
-                <FaEnvelope />
+                <FaWhatsapp />
               </a>
             </div>
           </div>

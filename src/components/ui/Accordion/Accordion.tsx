@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Accordion.module.css'
 import { AccordionProps } from '../../../types'
 
@@ -26,20 +25,14 @@ export const Accordion = ({ items, className = '' }: AccordionProps) => {
               <span>{item.question}</span>
               <span className={styles.icon}>{isOpen ? '−' : '+'}</span>
             </button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  id={`answer-${item.id}`}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className={styles.answerWrapper}
-                >
-                  <div className={styles.answer}>{item.answer}</div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {isOpen && (
+              <div
+                id={`answer-${item.id}`}
+                className={styles.answerWrapper}
+              >
+                <div className={styles.answer}>{item.answer}</div>
+              </div>
+            )}
           </div>
         )
       })}

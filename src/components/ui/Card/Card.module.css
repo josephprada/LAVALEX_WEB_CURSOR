@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-secondary);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   transition: all var(--transition-base);
@@ -10,17 +10,18 @@
 }
 
 .elevated {
-  box-shadow: var(--shadow-lg);
-  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 191, 255, 0.2);
 }
 
 .elevated:hover {
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 15px 40px rgba(0, 191, 255, 0.3);
   transform: translateY(-4px);
+  border-color: rgba(0, 191, 255, 0.4);
 }
 
 .outlined {
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-text-bright);
 }
 
 .header {
@@ -37,7 +38,7 @@
 
 .footer {
   padding: var(--spacing-lg);
-  border-top: var(--border-width) solid var(--color-border-primary);
-  background-color: var(--color-bg-secondary);
+  border-top: var(--border-width) solid rgba(0, 191, 255, 0.3);
+  background-color: var(--color-bg-tertiary);
 }
 

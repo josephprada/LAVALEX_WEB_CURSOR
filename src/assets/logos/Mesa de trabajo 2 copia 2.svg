@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Background" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#New_Gradient_Swatch_copy_23-3);
+      }
+
+      .cls-2 {
+        fill: url(#New_Gradient_Swatch_copy_23);
+      }
+
+      .cls-3 {
+        fill: url(#New_Gradient_Swatch_copy_23-6);
+      }
+
+      .cls-4 {
+        fill: url(#New_Gradient_Swatch_copy_23-4);
+      }
+
+      .cls-5 {
+        fill: url(#New_Gradient_Swatch_copy_23-2);
+      }
+
+      .cls-6 {
+        fill: url(#New_Gradient_Swatch_copy_23-5);
+      }
+
+      .cls-7 {
+        fill: url(#New_Gradient_Swatch_copy_23-7);
+      }
+    </style>
+    <linearGradient id="New_Gradient_Swatch_copy_23" data-name="New Gradient Swatch copy 23" x1="173.84" y1="437.12" x2="171.69" y2="563.82" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#37a7df"/>
+      <stop offset="1" stop-color="#2c3283"/>
+    </linearGradient>
+    <linearGradient id="New_Gradient_Swatch_copy_23-2" data-name="New Gradient Swatch copy 23" x1="280.65" y1="436.69" x2="278.49" y2="564.15" xlink:href="#New_Gradient_Swatch_copy_23"/>
+    <linearGradient id="New_Gradient_Swatch_copy_23-3" data-name="New Gradient Swatch copy 23" x1="389.64" y1="435.88" x2="387.48" y2="563.34" xlink:href="#New_Gradient_Swatch_copy_23"/>
+    <linearGradient id="New_Gradient_Swatch_copy_23-4" data-name="New Gradient Swatch copy 23" x1="503.14" y1="436.69" x2="500.98" y2="564.15" xlink:href="#New_Gradient_Swatch_copy_23"/>
+    <linearGradient id="New_Gradient_Swatch_copy_23-5" data-name="New Gradient Swatch copy 23" x1="613.7" y1="437.12" x2="611.55" y2="563.82" xlink:href="#New_Gradient_Swatch_copy_23"/>
+    <linearGradient id="New_Gradient_Swatch_copy_23-6" data-name="New Gradient Swatch copy 23" x1="711.6" y1="436.16" x2="709.43" y2="563.85" xlink:href="#New_Gradient_Swatch_copy_23"/>
+    <linearGradient id="New_Gradient_Swatch_copy_23-7" data-name="New Gradient Swatch copy 23" x1="814.86" y1="435.97" x2="812.69" y2="564.06" xlink:href="#New_Gradient_Swatch_copy_23"/>
+  </defs>
+  <path class="cls-2" d="M158.16,542.24h55.25v20.9h-81.27v-126.29h26.02v105.39Z"/>
+  <path class="cls-5" d="M301.28,537.12h-45.62l-8.67,26.02h-27.67l47.01-126.29h24.11l47.27,126.29h-27.67l-8.76-26.02ZM262.68,516.05h31.57l-15.87-47.27-15.7,47.27Z"/>
+  <path class="cls-1" d="M389.49,531.83l28.62-94.98h28.97l-43.98,126.29h-27.15l-43.8-126.29h28.88l28.45,94.98Z"/>
+  <path class="cls-4" d="M523.77,537.12h-45.62l-8.67,26.02h-27.67l47.01-126.29h24.11l47.27,126.29h-27.67l-8.76-26.02ZM485.17,516.05h31.57l-15.87-47.27-15.7,47.27Z"/>
+  <path class="cls-6" d="M598.02,542.24h55.25v20.9h-81.27v-126.29h26.02v105.39Z"/>
+  <path class="cls-3" d="M744.17,508.41h-49.96v33.83h58.64v20.9h-84.66v-126.29h84.48v21.08h-58.46v30.1h49.96v20.38Z"/>
+  <path class="cls-7" d="M813.3,480.4l23.68-43.54h29.93l-36.78,62.63,37.73,63.67h-30.27l-24.29-44.24-24.29,44.24h-30.27l37.73-63.67-36.78-62.63h29.93l23.68,43.54Z"/>
+</svg>

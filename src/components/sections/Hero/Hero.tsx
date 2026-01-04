@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
 import { Button } from '../../ui/Button/Button'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
+import logoWashingMachine from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
 import styles from './Hero.module.css'
 
 export const Hero = () => {
@@ -14,77 +14,70 @@ export const Hero = () => {
 
   return (
     <Section id="inicio" variant="primary" className={styles.hero}>
+      <div className={styles.animatedBackground}>
+        <div className={styles.bubbles}>
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div key={i} className={styles.bubble} style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${10 + Math.random() * 10}s`,
+              width: `${20 + Math.random() * 30}px`,
+              height: `${20 + Math.random() * 30}px`,
+            }}></div>
+          ))}
+        </div>
+        <div className={styles.waves}>
+          <div className={styles.wave}></div>
+          <div className={styles.wave}></div>
+        </div>
+      </div>
       <Container>
         <div className={styles.content}>
-          <motion.div
-            className={styles.textContent}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            <motion.h1
-              className={styles.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Compra y Venta de Lavadoras Automáticas
-            </motion.h1>
-            <motion.p
-              className={styles.subtitle}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              Tu centro de confianza para lavadoras automáticas de alta calidad. 
-              Ofrecemos compra, venta, reparación y mantenimiento de todas las marcas y modelos en Bucaramanga.
-            </motion.p>
-            <motion.div
-              className={styles.ctaGroup}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
+          <div className={styles.textContent}>
+            <h1 className={styles.title}>
+              COMPRA Y VENTA DE LAVADORAS AUTOMÁTICAS
+            </h1>
+            <p className={styles.subtitle}>
+                Compra, venta, reparación y mantenimiento en Bucaramanga. Calidad garantizada y atención inmediata a domicilio.
+            </p>
+            <div className={styles.ctaGroup}>
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => scrollToSection('#compra-venta')}
+                onClick={() => scrollToSection('#venta')}
                 className={styles.ctaButton}
               >
-                Comprar Lavadora
+                COMPRAR
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => scrollToSection('#compra-venta')}
+                onClick={() => scrollToSection('#compra')}
                 className={styles.ctaButton}
               >
-                Vender Lavadora
+                VENDER
               </Button>
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className={styles.illustration}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className={styles.washingMachine}>
-              <div className={styles.drum}>
-                <div className={styles.water}></div>
-                <div className={styles.bubbles}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div className={styles.controls}>
-                <div className={styles.control}></div>
-                <div className={styles.control}></div>
-                <div className={styles.control}></div>
-              </div>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => scrollToSection('#reparacion')}
+                className={styles.ctaButton}
+              >
+                <span className={styles.buttonText}>
+                  REPARACIÓN<br />MANTENIMIENTO
+                </span>
+              </Button>
             </div>
-          </motion.div>
+          </div>
+          <div className={styles.illustration}>
+            <div className={styles.washingMachine}>
+              <img
+                src={logoWashingMachine}
+                alt="Lavadora LAVALEX"
+                className={styles.logoImage}
+              />
+            </div>
+          </div>
         </div>
       </Container>
     </Section>
