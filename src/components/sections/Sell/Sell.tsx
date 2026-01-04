@@ -1,15 +1,24 @@
+import { useState } from 'react'
 import { Button } from '../../ui/Button/Button'
 import { Card } from '../../ui/Card/Card'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
+import { Modal } from '../../ui/Modal/Modal'
 import { WHATSAPP_NUMBER } from '../../../constants'
 import styles from './Sell.module.css'
 
+import samsungImage1 from '../../../assets/venta/samsung/WhatsApp Image 2025-12-17 at 11.32.31 AM.jpeg'
+import samsungImage2 from '../../../assets/venta/samsung/WhatsApp Image 2025-12-17 at 11.32.31 AM (1).jpeg'
+import samsungImage3 from '../../../assets/venta/samsung/WhatsApp Image 2025-12-17 at 11.32.31 AM (2).jpeg'
+import samsungImage4 from '../../../assets/venta/samsung/WhatsApp Image 2025-12-17 at 11.34.27 AM.jpeg'
+import backgroundImage from '../../../assets/bg/Generated Image January 03, 2026 - 7_40PM.png'
+
 export const Sell = () => {
+  const [selectedWasher, setSelectedWasher] = useState<number | null>(null)
   const washers = [
-    { id: 1, model: 'Lavadora Automática 15kg', price: '$450.000', status: 'Reacondicionada', brand: 'LG' },
-    { id: 2, model: 'Lavadora Automática 12kg', price: '$380.000', status: 'Reacondicionada', brand: 'Samsung' },
-    { id: 3, model: 'Lavadora Automática 18kg', price: '$520.000', status: 'Reacondicionada', brand: 'Whirlpool' },
+    { id: 1, model: 'Lavadora Automática 15kg', price: '$450.000', status: 'Reacondicionada', brand: 'LG', image: null },
+    { id: 2, model: 'Lavadora Automática 12kg', price: '$380.000', status: 'Reacondicionada', brand: 'Samsung', image: samsungImage1, images: [samsungImage1, samsungImage2, samsungImage3, samsungImage4] },
+    { id: 3, model: 'Lavadora Automática 18kg', price: '$520.000', status: 'Reacondicionada', brand: 'Whirlpool', image: null },
   ]
 
   const handleContact = (washer: typeof washers[0]) => {
@@ -17,8 +26,28 @@ export const Sell = () => {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
   }
 
+  const handleImageClick = (washerId: number) => {
+    const washer = washers.find((w) => w.id === washerId)
+    if (washer && washer.images && washer.images.length > 0) {
+      setSelectedWasher(washerId)
+    }
+  }
+
+  const handleCloseModal = () => {
+    setSelectedWasher(null)
+  }
+
+  const getSelectedWasherData = () => {
+    if (selectedWasher === null) return null
+    return washers.find((w) => w.id === selectedWasher) || null
+  }
+
   return (
     <Section id="venta" variant="secondary" className={styles.sell}>
+      <div 
+        className={styles.backgroundWrapper}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
       <Container>
         <div className={styles.header}>
           <h2 className={styles.title}>Lavadoras en Venta</h2>
@@ -31,8 +60,16 @@ export const Sell = () => {
         <div className={styles.gallery}>
           {washers.map((washer) => (
             <Card key={washer.id} variant="elevated" className={styles.washerCard}>
-              <div className={styles.washerImage}>
-                <div className={styles.placeholderImage}>🔄</div>
+              <div
+                className={styles.washerImage}
+                onClick={() => handleImageClick(washer.id)}
+                style={{ cursor: washer.images && washer.images.length > 0 ? 'pointer' : 'default' }}
+              >
+                {washer.image ? (
+                  <img src={washer.image} alt={`${washer.brand} ${washer.model}`} className={styles.washerImg} />
+                ) : (
+                  <div className={styles.placeholderImage}>🔄</div>
+                )}
               </div>
               <div className={styles.washerInfo}>
                 <h4 className={styles.washerBrand}>{washer.brand}</h4>
@@ -69,6 +106,20 @@ export const Sell = () => {
             </Button>
           </div>
         )}
+
+        {(() => {
+          const washer = getSelectedWasherData()
+          if (!washer || !washer.images) return null
+          return (
+            <Modal
+              isOpen={selectedWasher !== null}
+              onClose={handleCloseModal}
+              images={washer.images}
+              initialIndex={0}
+              title={`${washer.brand} ${washer.model}`}
+            />
+          )
+        })()}
       </Container>
     </Section>
   )

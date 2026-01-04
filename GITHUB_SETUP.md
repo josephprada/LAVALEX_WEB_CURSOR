@@ -32,3 +32,4 @@ Si el MCP de GitHub requiere autenticación, necesitarás:
 El repositorio local ya está listo con todos los archivos y el commit inicial.
 
 
+
