@@ -5,22 +5,41 @@ import CountUp from 'react-bits/src/content/TextAnimations/CountUp/CountUp'
 import GradientText from 'react-bits/src/content/TextAnimations/GradientText/GradientText'
 import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeContent'
 import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
+import ProfileCard from '../../ui/ProfileCard/ProfileCard'
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from '../../../constants'
 import expertImage from '../../../assets/Generated Image January 03, 2026 - 4_14PM.png'
+import grainUrl from '../../../assets/profile-card/grain.webp'
 import styles from './About.module.css'
 
 export const About = () => {
+  const handleContactClick = () => {
+    const message = encodeURIComponent(WHATSAPP_MESSAGE)
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
+  }
+
   return (
     <Section id="quien-soy" className={styles.about}>
       <Container>
         <div className={styles.content}>
           <div className={styles.imageContainer}>
-            <div className={styles.avatar}>
-              <img 
-                src={expertImage} 
-                alt="Experto en reparación de lavadoras" 
-                className={styles.expertImage}
-              />
-            </div>
+            <ProfileCard
+              avatarUrl={expertImage}
+              name="Alex Prada"
+              title="Técnico"
+              handle="alexprada"
+              status="Disponible"
+              contactText="Contactar"
+              showUserInfo={false}
+              enableTilt={true}
+              enableMobileTilt={false}
+              grainUrl={grainUrl}
+              innerGradient="linear-gradient(145deg, rgba(0, 191, 255, 0.25) 0%, rgba(30, 144, 255, 0.15) 50%, rgba(0, 102, 204, 0.2) 100%)"
+              behindGlowEnabled={true}
+              behindGlowColor="rgba(0, 191, 255, 0.67)"
+              behindGlowSize="50%"
+              className={styles.profileCardWrapper}
+              onContactClick={handleContactClick}
+            />
           </div>
           <div className={styles.textContent}>
             <h2 className={styles.title}>

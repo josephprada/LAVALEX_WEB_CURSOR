@@ -1,4 +1,4 @@
-import { Card } from '../../ui/Card/Card'
+import { useEffect, useRef, useState } from 'react'
 import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
 import BlurText from 'react-bits/src/content/TextAnimations/BlurText/BlurText'
@@ -6,7 +6,135 @@ import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeConte
 import { SERVICES } from '../../../constants'
 import styles from './RepairMaintenance.module.css'
 
+// Sketchfab API types
+declare global {
+  interface Window {
+    Sketchfab: any
+  }
+}
+
+interface SketchfabAPI {
+  gotoAnnotation: (index: number) => void
+  getAnnotations: (callback: (err: any, annotations: any[]) => void) => void
+  start: () => void
+  addEventListener: (event: string, callback: () => void) => void
+}
+
+const SKETCHFAB_MODEL_UID = 'c97197b3a6d64f78bb58404d29cf6a25'
+
 export const RepairMaintenance = () => {
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [api, setApi] = useState<SketchfabAPI | null>(null)
+  const [isViewerReady, setIsViewerReady] = useState(false)
+  const [loadingError, setLoadingError] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Wait for Sketchfab script to load
+    const initSketchfab = () => {
+      if (!window.Sketchfab || !iframeRef.current) {
+        return
+      }
+
+      try {
+        const client = new window.Sketchfab('1.12.1', iframeRef.current)
+
+        client.init(SKETCHFAB_MODEL_UID, {
+          success: (apiInstance: SketchfabAPI) => {
+            console.log('Sketchfab API initialized')
+            
+            // Wait for viewer to be ready
+            apiInstance.addEventListener('viewerready', () => {
+              console.log('Sketchfab viewer ready')
+              
+              // Verify API methods are available
+              if (typeof apiInstance.gotoAnnotation === 'function') {
+                console.log('gotoAnnotation method available')
+                // Add a delay to ensure everything is fully initialized
+                setTimeout(() => {
+                  setApi(apiInstance)
+                  setIsViewerReady(true)
+                  console.log('API ready for use')
+                }, 1500)
+              } else {
+                console.error('gotoAnnotation method not available')
+                setLoadingError('Error: La API no está completamente cargada.')
+              }
+            })
+            
+            // Start the viewer after setting up the listener
+            apiInstance.start()
+          },
+          error: (error: any) => {
+            console.error('Sketchfab init error:', error)
+            setLoadingError('Error al cargar el modelo 3D. Por favor, recarga la página.')
+          },
+        })
+      } catch (error) {
+        setLoadingError('Error al inicializar el visor 3D.')
+        console.error('Sketchfab initialization error:', error)
+      }
+    }
+
+    // Wait a bit for iframe to start loading, then initialize
+    const initTimer = setTimeout(() => {
+      // Check if Sketchfab is already loaded
+      if (window.Sketchfab && iframeRef.current) {
+        initSketchfab()
+      } else {
+        // Wait for script to load
+        const checkSketchfab = setInterval(() => {
+          if (window.Sketchfab && iframeRef.current) {
+            clearInterval(checkSketchfab)
+            initSketchfab()
+          }
+        }, 100)
+
+        // Cleanup after 10 seconds if still not loaded
+        setTimeout(() => {
+          clearInterval(checkSketchfab)
+          if (!window.Sketchfab) {
+            setLoadingError('Error al cargar el visor 3D. Por favor, recarga la página.')
+          }
+        }, 10000)
+      }
+    }, 1000) // Wait 1 second for iframe to start loading
+
+    // Cleanup function
+    return () => {
+      clearTimeout(initTimer)
+    }
+  }, [])
+
+  const handleAnnotationClick = (annotationIndex: number) => {
+    if (api && isViewerReady) {
+      try {
+        console.log('Navigating to annotation:', annotationIndex)
+        // Use the annotation index directly (0-based)
+        api.gotoAnnotation(annotationIndex)
+      } catch (error) {
+        console.error('Error navigating to annotation:', error)
+        // Try alternative method if gotoAnnotation fails
+        try {
+          // Some versions of the API might need different approach
+          if (api.getAnnotations) {
+            api.getAnnotations((err: any, annotations: any[]) => {
+              if (!err && annotations && annotations[annotationIndex]) {
+                // Try to navigate using the annotation object
+                console.log('Using alternative navigation method')
+              }
+            })
+          }
+        } catch (altError) {
+          console.error('Alternative navigation also failed:', altError)
+        }
+      }
+    } else {
+      console.warn('API not ready. isViewerReady:', isViewerReady, 'api:', !!api)
+    }
+  }
+
+  // URL con todas las configuraciones para fondo transparente y sin controles
+  const iframeUrl = `https://sketchfab.com/models/${SKETCHFAB_MODEL_UID}/embed?autostart=1&annotations_visible=0&annotation=1&transparent=1&ui_animations=1&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0`
 
   return (
     <Section id="reparacion" variant="secondary" className={styles.repairMaintenance}>
@@ -22,16 +150,59 @@ export const RepairMaintenance = () => {
           </FadeContent>
         </div>
 
-        <div className={styles.servicesGrid}>
-          {SERVICES.map((service) => (
-            <div key={service.id}>
-              <Card variant="elevated" className={styles.serviceCard}>
-                <div className={styles.icon}>{service.icon}</div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDescription}>{service.description}</p>
-              </Card>
-            </div>
-          ))}
+        <div className={styles.modelContainer}>
+          <div className={styles.modelViewer}>
+            {loadingError ? (
+              <div className={styles.errorMessage}>
+                <p>{loadingError}</p>
+              </div>
+            ) : (
+              <>
+                {!isViewerReady && (
+                  <div className={styles.loadingMessage}>
+                    <p>Cargando modelo 3D...</p>
+                  </div>
+                )}
+                <iframe
+                  key="sketchfab-model"
+                  ref={iframeRef}
+                  src={iframeUrl}
+                  title="LAVADORA_ZOU_20_KG_2"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; xr-spatial-tracking"
+                  allowFullScreen
+                  className={styles.sketchfabIframe}
+                  style={{ background: 'transparent' }}
+                />
+              </>
+            )}
+          </div>
+
+          <div className={styles.annotationsList}>
+            <h3 className={styles.annotationsTitle}>Nuestros Servicios</h3>
+            {SERVICES.map((service) => (
+              <div
+                key={service.id}
+                className={styles.annotationItem}
+                onClick={() => handleAnnotationClick(service.annotationIndex)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Ver anotación ${service.annotationIndex + 1}: ${service.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleAnnotationClick(service.annotationIndex)
+                  }
+                }}
+              >
+                <span className={styles.annotationNumber}>{service.annotationIndex + 1}</span>
+                <div className={styles.annotationContent}>
+                  <h4 className={styles.annotationTitle}>{service.title}</h4>
+                  <p className={styles.annotationDescription}>{service.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

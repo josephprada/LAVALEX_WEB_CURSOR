@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      .droplet {
+        fill: white;
+        opacity: 0.6;
+      }
+    </style>
+  </defs>
+  <!-- Patrón de gotas más visible -->
+  <circle class="droplet" cx="50" cy="50" r="12"/>
+  <circle class="droplet" cx="150" cy="40" r="10"/>
+  <circle class="droplet" cx="250" cy="70" r="11"/>
+  <circle class="droplet" cx="350" cy="50" r="9"/>
+  <circle class="droplet" cx="40" cy="150" r="8"/>
+  <circle class="droplet" cx="120" cy="130" r="13"/>
+  <circle class="droplet" cx="220" cy="140" r="10"/>
+  <circle class="droplet" cx="320" cy="160" r="9"/>
+  <circle class="droplet" cx="60" cy="250" r="11"/>
+  <circle class="droplet" cx="160" cy="240" r="10"/>
+  <circle class="droplet" cx="260" cy="260" r="12"/>
+  <circle class="droplet" cx="360" cy="250" r="8"/>
+  <circle class="droplet" cx="80" cy="350" r="9"/>
+  <circle class="droplet" cx="180" cy="340" r="11"/>
+  <circle class="droplet" cx="280" cy="360" r="10"/>
+  <circle class="droplet" cx="380" cy="350" r="8"/>
+  <circle class="droplet" cx="100" cy="100" r="7"/>
+  <circle class="droplet" cx="200" cy="90" r="9"/>
+  <circle class="droplet" cx="300" cy="110" r="8"/>
+  <circle class="droplet" cx="90" cy="200" r="10"/>
+  <circle class="droplet" cx="190" cy="190" r="12"/>
+  <circle class="droplet" cx="290" cy="210" r="9"/>
+  <circle class="droplet" cx="110" cy="300" r="8"/>
+  <circle class="droplet" cx="210" cy="290" r="11"/>
+  <circle class="droplet" cx="310" cy="310" r="10"/>
+</svg>
+

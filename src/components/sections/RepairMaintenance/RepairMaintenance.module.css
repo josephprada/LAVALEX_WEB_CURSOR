@@ -27,42 +27,162 @@
   line-height: var(--line-height-relaxed);
 }
 
-.servicesGrid {
+.modelContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-2xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: stretch;
 }
 
-.serviceCard {
-  text-align: center;
+.modelViewer {
+  position: relative;
+  width: 100%;
   height: 100%;
+  min-height: 600px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-base);
 }
 
-.serviceCard:hover {
-  transform: translateY(-8px);
+.sketchfabIframe {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  border: none;
+  display: block;
+  flex: 1;
+  background: transparent;
 }
 
-.icon {
-  font-size: 4rem;
-  margin-bottom: var(--spacing-lg);
-  filter: grayscale(0.2);
+.errorMessage,
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--color-text-light);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg-secondary);
+  z-index: 1;
+  border-radius: var(--border-radius-lg);
 }
 
-.serviceTitle {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+.errorMessage p,
+.loadingMessage p {
+  font-size: var(--font-size-lg);
+}
+
+.loadingMessage {
+  color: var(--color-text-bright);
+}
+
+.annotationsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  height: 100%;
+  min-height: 600px;
+}
+
+.annotationsTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
-.serviceDescription {
+.annotationItem {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  background: var(--color-bg-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+  flex: 1;
+  min-height: 0;
+  align-items: flex-start;
+}
+
+.annotationItem:hover {
+  transform: translateX(8px);
+  border-color: var(--color-primary);
+  background: var(--color-bg-tertiary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.annotationItem:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.annotationNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.annotationContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.annotationTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-bright);
+  margin: 0;
+}
+
+.annotationDescription {
   font-size: var(--font-size-base);
   color: var(--color-text-light);
   line-height: var(--line-height-relaxed);
-  flex-grow: 1;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .modelContainer {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .modelViewer {
+    min-height: 500px;
+  }
+
+  .sketchfabIframe {
+    min-height: 500px;
+  }
+
+  .errorMessage,
+  .loadingMessage {
+    min-height: 500px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -70,8 +190,32 @@
     font-size: var(--font-size-3xl);
   }
 
-  .servicesGrid {
-    grid-template-columns: 1fr;
+  .modelViewer {
+    min-height: 400px;
+  }
+
+  .sketchfabIframe {
+    min-height: 400px;
+  }
+
+  .errorMessage,
+  .loadingMessage {
+    min-height: 400px;
+  }
+
+  .annotationItem {
+    padding: var(--spacing-md);
+  }
+
+  .annotationNumber {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: var(--font-size-lg);
+  }
+
+  .annotationsTitle {
+    font-size: var(--font-size-xl);
   }
 }
 

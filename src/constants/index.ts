@@ -46,24 +46,35 @@ export const SERVICES = [
     title: 'Reparación de Todas las Marcas',
     description: 'Reparamos lavadoras automáticas de todas las marcas y modelos. Contamos con técnicos especializados y repuestos originales.',
     icon: '🔧',
+    annotationIndex: 0,
   },
   {
     id: 'mantenimiento',
     title: 'Mantenimiento Preventivo',
     description: 'Mantenimiento periódico para prolongar la vida útil de tu lavadora y prevenir fallas costosas.',
     icon: '🛠️',
+    annotationIndex: 1,
   },
   {
     id: 'piezas',
     title: 'Reemplazo de Piezas',
     description: 'Contamos con un amplio inventario de repuestos originales y compatibles para todas las marcas.',
     icon: '⚙️',
+    annotationIndex: 2,
   },
   {
     id: 'diagnostico',
     title: 'Diagnóstico Gratuito',
     description: 'Ofrecemos diagnóstico gratuito para identificar el problema de tu lavadora antes de realizar cualquier reparación.',
     icon: '🔍',
+    annotationIndex: 3,
+  },
+  {
+    id: 'garantia',
+    title: 'Garantía en Reparaciones',
+    description: 'Todas nuestras reparaciones incluyen garantía. Trabajamos con repuestos de calidad y garantizamos nuestro trabajo.',
+    icon: '✅',
+    annotationIndex: 4,
   },
 ]
 
