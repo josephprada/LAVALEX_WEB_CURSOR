@@ -91,11 +91,26 @@ Los colores de la marca están definidos en `src/styles/variables.css` y pueden 
 
 ## 🚀 Despliegue
 
-El proyecto está listo para desplegar en cualquier plataforma que soporte aplicaciones React/Vite:
+### GitHub Pages (Configurado)
+
+El proyecto está configurado para desplegarse automáticamente en GitHub Pages mediante GitHub Actions.
+
+**Pasos para habilitar GitHub Pages:**
+
+1. Ve a la configuración del repositorio en GitHub: `Settings` → `Pages`
+2. En la sección "Source", selecciona:
+   - **Source**: `GitHub Actions`
+3. El workflow se ejecutará automáticamente en cada push a `main`
+4. Tu sitio estará disponible en: `https://josephprada.github.io/LAVALEX_WEB_CURSOR/`
+
+**Nota:** El primer deploy puede tardar unos minutos. Puedes ver el progreso en la pestaña `Actions` del repositorio.
+
+### Otras Plataformas
+
+El proyecto también está listo para desplegar en:
 
 - Vercel
 - Netlify
-- GitHub Pages
 - AWS Amplify
 
 ## 📄 Licencia
