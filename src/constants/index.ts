@@ -1,10 +1,11 @@
-export const WHATSAPP_NUMBER = '57301510520'
+export const WHATSAPP_NUMBER = '573015710520'
 export const WHATSAPP_MESSAGE = 'Hola, me interesa conocer más sobre sus servicios de lavadoras.'
 
 export const NAVIGATION_ITEMS = [
   { id: 'compra', label: 'COMPRA', href: '#compra' },
   { id: 'venta', label: 'VENTA', href: '#venta' },
   { id: 'reparacion', label: 'REPARACIÓN Y MANTENIMIENTO', href: '#reparacion' },
+  { id: 'sobre-nosotros', label: 'SOBRE NOSOTROS', href: '#quien-soy' },
 ]
 
 export const FAQ_ITEMS = [

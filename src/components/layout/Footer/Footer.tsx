@@ -23,8 +23,8 @@ export const Footer = () => {
             <h4 className={styles.subtitle}>Contacto</h4>
             <div className={styles.contactInfo}>
               <p className={styles.contactItem}>Bucaramanga, Norte</p>
-              <a href="tel:+57301510520" className={styles.contactItem}>
-                +57 301510520
+              <a href="tel:+573015710520" className={styles.contactItem}>
+                +57 3015710520
               </a>
             </div>
           </div>
@@ -59,7 +59,7 @@ export const Footer = () => {
                 <FaMapMarkerAlt />
               </a>
               <a
-                href={`https://wa.me/57301510520`}
+                href={`https://wa.me/573015710520`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}

@@ -17,12 +17,26 @@ export const Modal = ({ isOpen, onClose, images, initialIndex = 0, title }: Moda
     if (isOpen) {
       setCurrentIndex(initialIndex)
       document.body.style.overflow = 'hidden'
+      // Reducir z-index del header cuando el modal está abierto
+      const header = document.querySelector('header')
+      if (header) {
+        ;(header as HTMLElement).style.zIndex = '1'
+      }
     } else {
       document.body.style.overflow = ''
+      // Restaurar z-index del header cuando el modal se cierra
+      const header = document.querySelector('header')
+      if (header) {
+        ;(header as HTMLElement).style.zIndex = ''
+      }
     }
 
     return () => {
       document.body.style.overflow = ''
+      const header = document.querySelector('header')
+      if (header) {
+        ;(header as HTMLElement).style.zIndex = ''
+      }
     }
   }, [isOpen, initialIndex])
 

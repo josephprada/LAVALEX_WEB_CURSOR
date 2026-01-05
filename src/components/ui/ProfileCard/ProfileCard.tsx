@@ -393,3 +393,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 const ProfileCard = React.memo(ProfileCardComponent);
 export default ProfileCard;
 
+
+
+

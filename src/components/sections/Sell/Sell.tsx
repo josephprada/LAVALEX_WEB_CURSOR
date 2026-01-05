@@ -17,6 +17,7 @@ import backgroundImage from '../../../assets/bg/Generated Image January 03, 2026
 
 export const Sell = () => {
   const [selectedWasher, setSelectedWasher] = useState<number | null>(null)
+  const [imageIndices, setImageIndices] = useState<Record<number, number>>({})
   const washers = [
     { id: 1, model: 'Lavadora Automática 15kg', price: '$450.000', status: 'Reacondicionada', brand: 'LG', image: null },
     { id: 2, model: 'Lavadora Automática 12kg', price: '$380.000', status: 'Reacondicionada', brand: 'Samsung', image: samsungImage1, images: [samsungImage1, samsungImage2, samsungImage3, samsungImage4] },
@@ -31,8 +32,36 @@ export const Sell = () => {
   const handleImageClick = (washerId: number) => {
     const washer = washers.find((w) => w.id === washerId)
     if (washer && washer.images && washer.images.length > 0) {
+      const currentIndex = imageIndices[washerId] || 0
       setSelectedWasher(washerId)
+      // Actualizar el índice inicial del modal
+      setTimeout(() => {
+        setImageIndices(prev => ({ ...prev, [washerId]: currentIndex }))
+      }, 0)
     }
+  }
+
+  const handleImageNavigation = (washerId: number, direction: 'prev' | 'next', e: React.MouseEvent) => {
+    e.stopPropagation()
+    const washer = washers.find((w) => w.id === washerId)
+    if (!washer || !washer.images || washer.images.length <= 1) return
+
+    const currentIndex = imageIndices[washerId] || 0
+    let newIndex: number
+
+    if (direction === 'prev') {
+      newIndex = currentIndex === 0 ? washer.images.length - 1 : currentIndex - 1
+    } else {
+      newIndex = currentIndex === washer.images.length - 1 ? 0 : currentIndex + 1
+    }
+
+    setImageIndices(prev => ({ ...prev, [washerId]: newIndex }))
+  }
+
+  const getCurrentImage = (washer: typeof washers[0]) => {
+    if (!washer.images || washer.images.length === 0) return washer.image
+    const currentIndex = imageIndices[washer.id] || 0
+    return washer.images[currentIndex]
   }
 
   const handleCloseModal = () => {
@@ -71,8 +100,49 @@ export const Sell = () => {
                 onClick={() => handleImageClick(washer.id)}
                 style={{ cursor: washer.images && washer.images.length > 0 ? 'pointer' : 'default' }}
               >
-                {washer.image ? (
-                  <img src={washer.image} alt={`${washer.brand} ${washer.model}`} className={styles.washerImg} />
+                {getCurrentImage(washer) ? (
+                  <>
+                    <img src={getCurrentImage(washer)} alt={`${washer.brand} ${washer.model}`} className={styles.washerImg} />
+                    {washer.images && washer.images.length > 0 && (
+                      <>
+                        <div className={styles.expandIcon} onClick={(e) => { e.stopPropagation(); handleImageClick(washer.id); }}>
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                        {washer.images.length > 1 && (
+                          <>
+                            <button
+                              className={styles.navArrowLeft}
+                              onClick={(e) => handleImageNavigation(washer.id, 'prev', e)}
+                              aria-label="Imagen anterior"
+                            >
+                              ‹
+                            </button>
+                            <button
+                              className={styles.navArrowRight}
+                              onClick={(e) => handleImageNavigation(washer.id, 'next', e)}
+                              aria-label="Imagen siguiente"
+                            >
+                              ›
+                            </button>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </>
                 ) : (
                   <div className={styles.placeholderImage}>🔄</div>
                 )}
@@ -121,7 +191,7 @@ export const Sell = () => {
               isOpen={selectedWasher !== null}
               onClose={handleCloseModal}
               images={washer.images}
-              initialIndex={0}
+              initialIndex={imageIndices[washer.id] || 0}
               title={`${washer.brand} ${washer.model}`}
             />
           )
