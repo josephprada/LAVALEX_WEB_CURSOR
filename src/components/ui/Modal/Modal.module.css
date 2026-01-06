@@ -75,9 +75,10 @@
 }
 
 .title {
+  font-family: var(--font-family-heading);
   color: var(--color-white);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-md);
   text-align: center;
 }

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from '../../ui/Button/Button'
 import { Input } from '../../ui/Input/Input'
 import { Card } from '../../ui/Card/Card'
@@ -18,10 +18,6 @@ export const Buy = () => {
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const [photos, setPhotos] = useState<File[]>([])
-  const [photoPreviews, setPhotoPreviews] = useState<string[]>([])
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const photoPreviewsRef = useRef<string[]>([])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -30,47 +26,6 @@ export const Buy = () => {
       setErrors((prev) => ({ ...prev, [name]: '' }))
     }
   }
-
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (!files) return
-
-    const newFiles = Array.from(files)
-    const validFiles = newFiles.filter((file) => file.type.startsWith('image/'))
-    
-    if (validFiles.length === 0) return
-
-    const updatedPhotos = [...photos, ...validFiles]
-    setPhotos(updatedPhotos)
-
-    const newPreviews = validFiles.map((file) => URL.createObjectURL(file))
-    setPhotoPreviews((prev) => {
-      const updated = [...prev, ...newPreviews]
-      photoPreviewsRef.current = updated
-      return updated
-    })
-  }
-
-  const removePhoto = (index: number) => {
-    const updatedPhotos = photos.filter((_, i) => i !== index)
-    const updatedPreviews = photoPreviews.filter((_, i) => i !== index)
-    
-    URL.revokeObjectURL(photoPreviews[index])
-    photoPreviewsRef.current = updatedPreviews
-    
-    setPhotos(updatedPhotos)
-    setPhotoPreviews(updatedPreviews)
-    
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ''
-    }
-  }
-
-  useEffect(() => {
-    return () => {
-      photoPreviewsRef.current.forEach((preview) => URL.revokeObjectURL(preview))
-    }
-  }, [])
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -90,16 +45,9 @@ export const Buy = () => {
     e.preventDefault()
     if (!validateForm()) return
 
-    const photosInfo = photos.length > 0 ? `\n\nAdjunté ${photos.length} foto${photos.length > 1 ? 's' : ''} de mi lavadora.` : ''
-    const message = `Hola, soy ${formData.name}. Me interesa vender mi lavadora. ${formData.message ? `Mensaje: ${formData.message}` : ''}${photosInfo}`
+    const message = `Hola, soy ${formData.name}. Me interesa vender mi lavadora. ${formData.message ? `Mensaje: ${formData.message}` : ''}`
     const encodedMessage = encodeURIComponent(message)
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank')
-    
-    if (photos.length > 0) {
-      setTimeout(() => {
-        alert('Nota: Las fotos se pueden compartir manualmente en WhatsApp después de abrir el chat.')
-      }, 500)
-    }
   }
 
   return (
@@ -171,42 +119,6 @@ export const Buy = () => {
                   value={formData.message}
                   onChange={handleChange}
                 />
-                <div className={styles.photoSection}>
-                  <label className={styles.photoLabel}>
-                    Fotos de tu lavadora (opcional)
-                  </label>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    multiple
-                    onChange={handlePhotoChange}
-                    className={styles.photoInput}
-                    id="photo-input"
-                  />
-                  <label htmlFor="photo-input" className={styles.photoButton}>
-                    <span className={styles.photoButtonIcon}>📷</span>
-                    <span>{photos.length > 0 ? 'Agregar más fotos' : 'Tomar o seleccionar fotos'}</span>
-                  </label>
-                  {photoPreviews.length > 0 && (
-                    <div className={styles.photoPreviews}>
-                      {photoPreviews.map((preview, index) => (
-                        <div key={index} className={styles.photoPreview}>
-                          <img src={preview} alt={`Preview ${index + 1}`} />
-                          <button
-                            type="button"
-                            onClick={() => removePhoto(index)}
-                            className={styles.removePhotoButton}
-                            aria-label="Eliminar foto"
-                          >
-                            ×
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
                 <Button type="submit" variant="primary" size="lg" className={styles.submitButton}>
                   Enviar a WhatsApp
                 </Button>

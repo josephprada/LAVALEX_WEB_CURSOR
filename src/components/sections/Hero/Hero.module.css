@@ -129,8 +129,9 @@
 }
 
 .title {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   margin-bottom: var(--spacing-lg);
   color: var(--color-text-bright);

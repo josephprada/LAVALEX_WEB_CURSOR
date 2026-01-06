@@ -8,8 +8,9 @@
 }
 
 .title {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-lg);
   text-transform: uppercase;
@@ -45,8 +46,9 @@
 }
 
 .infoTitle {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-md);
   margin-top: var(--spacing-lg);
@@ -115,8 +117,9 @@
 }
 
 .formTitle {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-xl);
 }

@@ -115,3 +115,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Tipografía para títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-bright);
+}
+
+/* Estilos globales para GradientText con ultrabold */
+.animated-gradient-text .text-content {
+  font-family: var(--font-family-heading) !important;
+}
+
+/* Específico para logo del header - selector más específico */
+header span[class*="logoText"] .animated-gradient-text .text-content,
+header .logoText .animated-gradient-text .text-content {
+  font-weight: 900 !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+/* Específico para título del footer - selector más específico */
+footer h3[class*="companyTitle"] .animated-gradient-text .text-content,
+footer .companyTitle .animated-gradient-text .text-content {
+  font-weight: 900 !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+

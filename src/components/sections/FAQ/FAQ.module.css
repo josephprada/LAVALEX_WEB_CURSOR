@@ -123,8 +123,9 @@
 }
 
 .title {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-lg);
   text-transform: uppercase;

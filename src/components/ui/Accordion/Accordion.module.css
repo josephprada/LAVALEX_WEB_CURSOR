@@ -13,6 +13,7 @@
 }
 
 .question {
+  font-family: var(--font-family-heading);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,7 @@
   cursor: pointer;
   text-align: left;
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-bright);
   transition: all var(--transition-base);
 }

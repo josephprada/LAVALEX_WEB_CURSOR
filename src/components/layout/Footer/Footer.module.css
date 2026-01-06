@@ -19,8 +19,9 @@
 }
 
 .companyTitle {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-2xl);
-  font-weight: 800;
+  font-weight: var(--font-weight-black);
   color: var(--color-text-bright);
   margin: 0;
   text-align: left;
@@ -28,9 +29,18 @@
   justify-content: flex-start;
 }
 
+.companyTitle :global(.animated-gradient-text),
+.companyTitle :global(.animated-gradient-text) :global(.text-content),
+.companyTitle :global(*) :global(.text-content) {
+  font-family: var(--font-family-heading) !important;
+  font-weight: var(--font-weight-black) !important;
+  font-size: inherit !important;
+}
+
 .subtitle {
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-white);
   margin: 0;
   margin-bottom: var(--spacing-sm);
