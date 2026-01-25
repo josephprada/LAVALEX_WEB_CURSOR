@@ -265,6 +265,16 @@
   margin-right: auto;
 }
 
+.loading {
+  text-align: center;
+  padding: var(--spacing-4xl) var(--spacing-lg);
+}
+
+.loading p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+}
+
 @media (max-width: 768px) {
   .sell {
     padding-top: 20px;

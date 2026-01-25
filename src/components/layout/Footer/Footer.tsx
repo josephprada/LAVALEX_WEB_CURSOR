@@ -1,10 +1,17 @@
+import { useState } from 'react'
 import { FaFacebook, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 import GradientText from 'react-bits/src/content/TextAnimations/GradientText/GradientText'
 import { Container } from '../Container/Container'
+import { AdminLogin } from '../../admin/AdminLogin/AdminLogin'
 import styles from './Footer.module.css'
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+
+  const handleLogoClick = () => {
+    setIsLoginOpen(true)
+  }
 
   return (
     <footer className={styles.footer}>
@@ -12,7 +19,9 @@ export const Footer = () => {
         <div className={styles.content}>
           <div className={styles.section}>
             <h3 className={styles.companyTitle}>
-              <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
+              <div onClick={handleLogoClick} style={{ cursor: 'pointer' }} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleLogoClick() }}>
+                <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
+              </div>
             </h3>
             <p className={styles.description}>
               Expertos en reparación, mantenimiento, compra y venta de lavadoras en Bucaramanga. Más de 10 años resolviendo fallas.
@@ -77,6 +86,7 @@ export const Footer = () => {
           </p>
         </div>
       </Container>
+      <AdminLogin isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </footer>
   )
 }
