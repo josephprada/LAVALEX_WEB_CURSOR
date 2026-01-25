@@ -133,9 +133,7 @@ header span[class*="logoText"] .animated-gradient-text .text-content,
 header .logoText .animated-gradient-text .text-content {
   font-weight: 900 !important;
   font-family: 'Nunito', sans-serif !important;
-}
-
-/* Específico para título del footer - selector más específico */
+}/* Específico para título del footer - selector más específico */
 footer h3[class*="companyTitle"] .animated-gradient-text .text-content,
 footer .companyTitle .animated-gradient-text .text-content {
   font-weight: 900 !important;

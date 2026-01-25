@@ -7,9 +7,10 @@ export const useTheme = () => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('theme') as Theme
       if (stored) return stored
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      // Por defecto, usar modo oscuro ya que es el estilo actual de la aplicación
+      return 'dark'
     }
-    return 'light'
+    return 'dark'
   })
 
   useEffect(() => {

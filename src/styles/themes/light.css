@@ -1,22 +1,35 @@
 :root[data-theme='light'],
 :root:not([data-theme]) {
-  /* Backgrounds - Estilo oscuro como default */
-  --color-bg-primary: var(--color-bg-dark);
-  --color-bg-secondary: #0f2442;
-  --color-bg-tertiary: #152d4f;
-  --color-bg-inverse: var(--color-white);
+  /* Backgrounds - Estilo claro con fondo blanco */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #e6f3ff;
+  --color-bg-tertiary: #d0e7ff;
+  --color-bg-inverse: var(--color-bg-dark);
+  --color-bg-header: rgba(255, 255, 255, 0.95);
+  --color-bg-header-scrolled: rgba(255, 255, 255, 0.98);
 
-  /* Text - Azul brillante */
-  --color-text-primary: var(--color-text-bright);
-  --color-text-secondary: var(--color-text-light);
-  --color-text-tertiary: #5a9fc7;
-  --color-text-inverse: var(--color-bg-dark);
-  --color-text-link: var(--color-text-bright);
-  --color-text-link-hover: var(--color-primary-bright);
+  /* Text - Azul oscuro con buen contraste para accesibilidad */
+  --color-text-primary: #003d7a;
+  --color-text-secondary: #0056b3;
+  --color-text-tertiary: #0066cc;
+  --color-text-inverse: var(--color-white);
+  --color-text-link: #0066cc;
+  --color-text-link-hover: #0056b3;
+  
+  /* Variables de compatibilidad para componentes que usan --color-text-bright y --color-text-light */
+  --color-text-bright: #003d7a;
+  --color-text-light: #0056b3;
 
   /* Borders */
-  --color-border-primary: rgba(0, 191, 255, 0.3);
-  --color-border-secondary: rgba(0, 191, 255, 0.5);
-  --color-border-focus: var(--color-text-bright);
+  --color-border-primary: rgba(0, 102, 204, 0.2);
+  --color-border-secondary: rgba(0, 102, 204, 0.3);
+  --color-border-focus: #0066cc;
+  
+  /* Colores para animaciones y efectos - Azul celeste más oscuro para mejor visibilidad */
+  --color-animation-primary: rgba(70, 130, 180, 0.25);
+  --color-animation-secondary: rgba(100, 149, 237, 0.35);
+  --color-animation-accent: rgba(70, 130, 180, 0.2);
+  --color-bubble-bg: rgba(70, 130, 180, 0.4);
+  --color-bubble-shadow: rgba(70, 130, 180, 0.5);
 }
 

@@ -47,14 +47,12 @@ export const About = () => {
             </h2>
             <FadeContent delay={0.2}>
               <p className={styles.description}>
-                Soy un técnico especializado en reparación y mantenimiento de lavadoras automáticas con más de 10 años de experiencia en el sector. 
-                Mi pasión por brindar un servicio de calidad me ha llevado a especializarme en todas las marcas y modelos del mercado.
+                Con más de 10 años reparando lavadoras en Bucaramanga, conozco las fallas más comunes y cómo solucionarlas. Cada caso es diferente, y siempre hay algo nuevo que aprender.
               </p>
             </FadeContent>
             <FadeContent delay={0.3}>
               <p className={styles.description}>
-                En LAVALEX, nos comprometemos a ofrecer soluciones rápidas, eficientes y confiables para todos nuestros clientes en Bucaramanga. 
-                Trabajamos con repuestos originales y garantizamos nuestro trabajo, porque tu satisfacción es nuestra prioridad.
+                En LAVALEX no solo reparamos: diagnosticamos el problema real, usamos repuestos de calidad y te garantizamos el trabajo. Si tu lavadora tiene solución, la encontramos. Si no la tiene, te lo decimos honestamente.
               </p>
             </FadeContent>
             <AnimatedContent delay={0.4} direction="vertical" distance={50}>
@@ -77,26 +75,26 @@ export const About = () => {
               <div className={styles.stat}>
                 <span className={styles.statNumber}>
                   <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>
-                    <CountUp to={10} />+
-                  </GradientText>
-                </span>
-                <span className={styles.statLabel}>Años de Experiencia</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>
-                  <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>
                     <CountUp to={500} />+
                   </GradientText>
                 </span>
-                <span className={styles.statLabel}>Clientes Satisfechos</span>
+                <span className={styles.statLabel}>Clientes Atendidos</span>
               </div>
               <div className={styles.stat}>
                 <span className={styles.statNumber}>
                   <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>
-                    <CountUp to={100} />%
+                    <CountUp to={10} />+
                   </GradientText>
                 </span>
-                <span className={styles.statLabel}>Garantía</span>
+                <span className={styles.statLabel}>Años Resolviendo Fallas</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>
+                  <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>
+                    24h
+                  </GradientText>
+                </span>
+                <span className={styles.statLabel}>Diagnóstico Express</span>
               </div>
               </div>
             </AnimatedContent>

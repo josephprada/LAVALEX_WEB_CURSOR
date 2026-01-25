@@ -86,8 +86,7 @@ export const Sell = () => {
           </h2>
           <FadeContent delay={0.2}>
             <p className={styles.description}>
-              Vendemos lavadoras reacondicionadas con garantía. Todas nuestras lavadoras pasan por un proceso 
-              de revisión y mantenimiento completo antes de ser puestas a la venta.
+              Lavadoras probadas por un técnico con 10 años de experiencia. Cada equipo pasa por 15 puntos de revisión antes de salir a la venta. No compras una lavadora usada, compras una lavadora verificada con garantía.
             </p>
           </FadeContent>
         </div>

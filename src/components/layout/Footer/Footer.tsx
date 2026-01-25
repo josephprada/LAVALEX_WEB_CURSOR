@@ -15,7 +15,7 @@ export const Footer = () => {
               <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
             </h3>
             <p className={styles.description}>
-              Soluciones integrales para el lavado en el hogar. Compra, venta y servicio técnico de confianza.
+              Expertos en reparación, mantenimiento, compra y venta de lavadoras en Bucaramanga. Más de 10 años resolviendo fallas.
             </p>
           </div>
 

@@ -3,6 +3,7 @@ import { Container } from '../../layout/Container/Container'
 import { Section } from '../../ui/Section/Section'
 import SplitText from 'react-bits/src/content/TextAnimations/SplitText/SplitText'
 import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
+import { WHATSAPP_NUMBER } from '../../../constants'
 import logoWashingMachine from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
 import styles from './Hero.module.css'
 
@@ -12,6 +13,11 @@ export const Hero = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+  }
+
+  const handleContactClick = () => {
+    const message = encodeURIComponent('Hola, necesito un técnico para revisar mi lavadora.')
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
   }
 
   return (
@@ -37,11 +43,11 @@ export const Hero = () => {
         <div className={styles.content}>
           <div className={styles.textContent}>
             <h1 className={styles.title}>
-              <SplitText text="COMPRA Y VENTA DE LAVADORAS AUTOMÁTICAS" className={styles.title} />
+              <SplitText text="¿TU LAVADORA FALLÓ? NOSOTROS LA REVIVIMOS" className={styles.title} />
             </h1>
             <AnimatedContent delay={0.15} direction="vertical" distance={30}>
               <p className={styles.subtitle}>
-                  Compra, venta, reparación y mantenimiento en Bucaramanga. Calidad garantizada y atención inmediata a domicilio.
+                  Expertos en reparación y mantenimiento de lavadoras. También compramos tu equipo usado y vendemos lavadoras reacondicionadas con garantía.
               </p>
             </AnimatedContent>
             <div className={styles.ctaGroup}>
@@ -49,10 +55,10 @@ export const Hero = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  onClick={() => scrollToSection('#venta')}
+                  onClick={handleContactClick}
                   className={styles.ctaButton}
                 >
-                  COMPRAR
+                  Solicitar Técnico
                 </Button>
               </AnimatedContent>
               <AnimatedContent delay={0.2} direction="vertical" distance={50}>
@@ -62,19 +68,17 @@ export const Hero = () => {
                   onClick={() => scrollToSection('#compra')}
                   className={styles.ctaButton}
                 >
-                  VENDER
+                  Vender Equipo
                 </Button>
               </AnimatedContent>
               <AnimatedContent delay={0.3} direction="vertical" distance={50}>
                 <Button
                   variant="outline"
                   size="lg"
-                  onClick={() => scrollToSection('#reparacion')}
+                  onClick={() => scrollToSection('#venta')}
                   className={styles.ctaButton}
                 >
-                  <span className={styles.buttonText}>
-                    REPARACIÓN<br />MANTENIMIENTO
-                  </span>
+                  Ver Catálogo
                 </Button>
               </AnimatedContent>
             </div>

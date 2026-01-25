@@ -1,8 +1,9 @@
 .footer {
-  background-color: #0f2442;
-  border-top: var(--border-width) solid rgba(0, 191, 255, 0.3);
+  background-color: var(--color-bg-secondary);
+  border-top: var(--border-width) solid var(--color-border-primary);
   padding: var(--spacing-3xl) 0 var(--spacing-xl);
   margin-top: 0;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
 }
 
 .content {
@@ -41,16 +42,18 @@
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--color-text-primary);
   margin: 0;
   margin-bottom: var(--spacing-sm);
+  transition: color var(--transition-base);
 }
 
 .description {
-  color: var(--color-white);
+  color: var(--color-text-primary);
   line-height: var(--line-height-relaxed);
   margin: 0;
   font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
 }
 
 .contactInfo,
@@ -62,10 +65,11 @@
 
 .contactItem,
 .scheduleItem {
-  color: var(--color-white);
+  color: var(--color-text-primary);
   margin: 0;
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
+  transition: color var(--transition-base);
 }
 
 .contactItem {
@@ -106,17 +110,17 @@
   width: 2.5rem;
   height: 2.5rem;
   background-color: transparent;
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-text-primary);
   border-radius: var(--border-radius-full);
-  color: var(--color-white);
+  color: var(--color-text-primary);
   transition: all var(--transition-base);
   font-size: var(--font-size-lg);
 }
 
 .socialLink:hover {
-  background-color: var(--color-text-bright);
-  border-color: var(--color-text-bright);
-  color: var(--color-bg-dark);
+  background-color: var(--color-text-link-hover);
+  border-color: var(--color-text-link-hover);
+  color: var(--color-bg-primary);
   transform: translateY(-2px);
 }
 

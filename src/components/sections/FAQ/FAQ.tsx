@@ -37,7 +37,7 @@ export const FAQ = () => {
           </h2>
           <FadeContent delay={0.2}>
             <p className={styles.description}>
-              Resolvemos las dudas más comunes sobre nuestros servicios de compra, venta, reparación y mantenimiento de lavadoras.
+              Resolvemos las dudas más comunes sobre nuestros servicios de reparación, mantenimiento, compra y venta de lavadoras. Si tienes alguna otra pregunta, contáctanos.
             </p>
           </FadeContent>
         </div>

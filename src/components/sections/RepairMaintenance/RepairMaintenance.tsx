@@ -145,7 +145,7 @@ export const RepairMaintenance = () => {
           </h2>
           <FadeContent delay={0.2}>
             <p className={styles.description}>
-              Ofrecemos servicios profesionales de reparación y mantenimiento para todas las marcas y modelos de lavadoras automáticas.
+              Una lavadora que falla no significa que necesitas comprar otra. El 85% de las fallas tienen reparación y cuestan menos de lo que imaginas. Diagnóstico gratuito en 24 horas.
             </p>
           </FadeContent>
         </div>

@@ -5,7 +5,8 @@
   padding-top: 80px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0A1931 0%, #0f2442 50%, #152d4f 100%);
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 50%, var(--color-bg-tertiary) 100%);
+  transition: background var(--transition-base);
 }
 
 .animatedBackground {
@@ -28,11 +29,12 @@
 .bubble {
   position: absolute;
   bottom: -50px;
-  background: rgba(0, 191, 255, 0.15);
+  background: var(--color-bubble-bg);
   border-radius: 50%;
   opacity: 0.6;
   animation: float linear infinite;
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 0 20px var(--color-bubble-shadow);
+  transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .bubble::before {
@@ -80,13 +82,14 @@
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(0, 191, 255, 0.05) 25%, 
-    rgba(30, 144, 255, 0.08) 50%, 
-    rgba(0, 191, 255, 0.05) 75%, 
+    var(--color-animation-primary) 25%, 
+    var(--color-animation-secondary) 50%, 
+    var(--color-animation-primary) 75%, 
     transparent 100%
   );
   animation: wave 15s linear infinite;
   opacity: 0.6;
+  transition: background var(--transition-base);
 }
 
 .wave:nth-child(2) {
@@ -95,9 +98,9 @@
   opacity: 0.4;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(0, 191, 255, 0.03) 25%, 
-    rgba(30, 144, 255, 0.06) 50%, 
-    rgba(0, 191, 255, 0.03) 75%, 
+    var(--color-animation-accent) 25%, 
+    var(--color-animation-primary) 50%, 
+    var(--color-animation-accent) 75%, 
     transparent 100%
   );
 }
@@ -154,9 +157,10 @@
 }
 
 .ctaButton {
-  flex: 1;
-  min-width: 140px;
-  max-width: 160px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 .buttonText {
@@ -235,14 +239,15 @@
 
   .ctaGroup {
     flex-direction: column;
+    align-items: center;
     gap: var(--spacing-md);
     width: 100%;
   }
 
   .ctaButton {
-    width: 100%;
-    max-width: none;
-    min-width: auto;
+    width: auto;
+    min-width: 200px;
+    white-space: nowrap;
   }
 
   .illustration {

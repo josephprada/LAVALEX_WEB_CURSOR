@@ -55,12 +55,11 @@ export const Buy = () => {
       <Container>
         <div className={styles.header}>
           <h2 className={styles.title}>
-            <BlurText text="Compramos Tu Lavadora" className={styles.title} />
+            <BlurText text="Convertimos Tu Lavadora Vieja en Dinero" className={styles.title} />
           </h2>
           <FadeContent delay={0.2}>
             <p className={styles.description}>
-              ¿Tienes una lavadora usada o dañada que quieres vender? Compramos lavadoras automáticas de todas las marcas y modelos. 
-              Evaluamos cada caso individualmente para ofrecerte el mejor precio.
+              ¿Tu lavadora dejó de funcionar y está ocupando espacio? ¿Quieres renovar pero no sabes qué hacer con la anterior? La compramos aunque esté dañada. Evaluación rápida y pago inmediato.
             </p>
           </FadeContent>
         </div>
@@ -71,9 +70,10 @@ export const Buy = () => {
               <Card variant="elevated" className={styles.infoCard}>
                 <h3 className={styles.infoTitle}>¿Qué Lavadoras Compramos?</h3>
                 <ul className={styles.infoList}>
-                  <li>Lavadoras automáticas de todas las marcas</li>
-                  <li>Lavadoras en buen estado o dañadas</li>
-                  <li>Diferentes capacidades (10kg, 12kg, 15kg, 18kg, etc.)</li>
+                  <li>Lavadoras funcionando que ya no necesitas</li>
+                  <li>Lavadoras con fallas que no quieres reparar</li>
+                  <li>Equipos de cualquier marca y capacidad</li>
+                  <li>Incluso si crees que "ya no sirve" - nosotros evaluamos</li>
                 </ul>
                 <h3 className={styles.infoTitle}>Proceso de Compra</h3>
                 <ol className={styles.processList}>

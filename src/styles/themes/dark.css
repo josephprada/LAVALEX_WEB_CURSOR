@@ -4,6 +4,8 @@
   --color-bg-secondary: #0f2442;
   --color-bg-tertiary: #152d4f;
   --color-bg-inverse: var(--color-white);
+  --color-bg-header: rgba(10, 25, 49, 0.95);
+  --color-bg-header-scrolled: rgba(10, 25, 49, 0.98);
 
   /* Text - Azul brillante */
   --color-text-primary: var(--color-text-bright);
@@ -17,5 +19,12 @@
   --color-border-primary: rgba(0, 191, 255, 0.3);
   --color-border-secondary: rgba(0, 191, 255, 0.5);
   --color-border-focus: var(--color-text-bright);
+  
+  /* Colores para animaciones y efectos - Azul brillante oscuro */
+  --color-animation-primary: rgba(0, 191, 255, 0.15);
+  --color-animation-secondary: rgba(30, 144, 255, 0.2);
+  --color-animation-accent: rgba(0, 191, 255, 0.1);
+  --color-bubble-bg: rgba(0, 191, 255, 0.15);
+  --color-bubble-shadow: rgba(0, 191, 255, 0.3);
 }
 

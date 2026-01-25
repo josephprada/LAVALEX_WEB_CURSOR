@@ -4,14 +4,15 @@
   left: 0;
   right: 0;
   z-index: var(--z-index-sticky);
-  background-color: rgba(10, 25, 49, 0.95);
+  background-color: var(--color-bg-header, var(--color-bg-primary));
   backdrop-filter: blur(4px);
-  border-bottom: var(--border-width) solid rgba(0, 191, 255, 0.2);
+  border-bottom: var(--border-width) solid var(--color-border-primary);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background-color var(--transition-base),
               backdrop-filter var(--transition-base),
-              box-shadow var(--transition-base);
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
   transform: translateY(0);
   opacity: 1;
 }
@@ -29,8 +30,8 @@
 }
 
 .scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  background-color: rgba(10, 25, 49, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-header-scrolled, var(--color-bg-primary));
   backdrop-filter: blur(6px);
 }
 
@@ -93,7 +94,7 @@
 
 .navLink {
   font-family: var(--font-family-heading);
-  color: var(--color-text-bright);
+  color: var(--color-text-primary);
   text-decoration: none;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-sm);
@@ -105,8 +106,49 @@
 }
 
 .navLink:hover {
-  color: var(--color-white);
-  text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+  color: var(--color-text-link-hover);
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+  border-radius: var(--border-radius-md);
+}
+
+.themeToggle:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-link-hover);
+  transform: scale(1.1);
+}
+
+.themeToggle:active {
+  transform: scale(0.95);
+}
+
+.themeToggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-base);
+}
+
+.themeToggle:hover svg {
+  transform: rotate(15deg);
 }
 
 .mobileMenuButton {
@@ -183,6 +225,6 @@
 
 .mobileNavLink:hover {
   background-color: var(--color-bg-secondary);
-  color: var(--color-primary);
+  color: var(--color-text-link-hover);
 }
 
