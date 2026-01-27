@@ -95,6 +95,78 @@
   gap: var(--spacing-lg);
 }
 
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordInput {
+  width: 100%;
+}
+
+.passwordWrapper :global(input) {
+  padding-right: calc(var(--spacing-md) + 32px + var(--spacing-sm));
+}
+
+.passwordWrapper :global(.wrapper) {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: var(--spacing-md);
+  top: calc(var(--font-size-sm) + var(--spacing-xs) + var(--spacing-md) + 0.875rem); /* Label (sm) + gap (xs) + padding top (md) + centro del input */
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  z-index: 10;
+  height: 32px;
+  width: 32px;
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: var(--border-radius-sm);
+}
+
+.passwordToggle:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.passwordToggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.passwordToggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.eyeIcon {
+  font-size: var(--font-size-lg);
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 640px) {
+  .passwordToggle {
+    top: calc(1.5rem + var(--spacing-xs) + var(--spacing-md));
+  }
+}
+
+.eyeIcon {
+  font-size: var(--font-size-lg);
+  width: 20px;
+  height: 20px;
+}
+
 .errorMessage {
   background: rgba(239, 68, 68, 0.1);
   color: var(--color-error);

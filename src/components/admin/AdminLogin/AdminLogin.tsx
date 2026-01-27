@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useAuth } from '../../../hooks/useAuth'
 import { Button } from '../../ui/Button/Button'
 import { Input } from '../../ui/Input/Input'
@@ -13,6 +14,7 @@ interface AdminLoginProps {
 export const AdminLogin = ({ isOpen, onClose }: AdminLoginProps) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const { signIn, loading } = useAuth()
   const navigate = useNavigate()
@@ -88,16 +90,33 @@ export const AdminLogin = ({ isOpen, onClose }: AdminLoginProps) => {
               error={error && !email ? 'Campo requerido' : undefined}
             />
             
-            <Input
-              type="password"
-              label="Contraseña"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={loading}
-              error={error && !password ? 'Campo requerido' : undefined}
-            />
+            <div className={styles.passwordWrapper}>
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                label="Contraseña"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={loading}
+                error={error && !password ? 'Campo requerido' : undefined}
+                className={styles.passwordInput}
+              />
+              <button
+                type="button"
+                className={styles.passwordToggle}
+                onClick={() => setShowPassword(!showPassword)}
+                disabled={loading}
+                aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                tabIndex={0}
+              >
+                {showPassword ? (
+                  <FaEyeSlash className={styles.eyeIcon} />
+                ) : (
+                  <FaEye className={styles.eyeIcon} />
+                )}
+              </button>
+            </div>
 
             {error && (
               <div className={styles.errorMessage}>
