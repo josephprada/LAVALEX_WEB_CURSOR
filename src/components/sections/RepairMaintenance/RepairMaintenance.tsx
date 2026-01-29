@@ -68,6 +68,21 @@ export const RepairMaintenance = () => {
             console.error('Sketchfab init error:', error)
             setLoadingError('Error al cargar el modelo 3D. Por favor, recarga la página.')
           },
+          // Configuraciones que coinciden con la URL del iframe
+          annotations_visible: 0,
+          transparent: 1,
+          ui_animations: 0,
+          ui_infos: 0,
+          ui_stop: 0,
+          ui_inspector: 0,
+          ui_watermark_link: 0,
+          ui_watermark: 0,
+          ui_ar: 0,
+          ui_help: 0,
+          ui_settings: 0,
+          ui_vr: 0,
+          ui_fullscreen: 0,
+          ui_annotations: 0
         })
       } catch (error) {
         setLoadingError('Error al inicializar el visor 3D.')
@@ -134,10 +149,35 @@ export const RepairMaintenance = () => {
   }
 
   // URL con todas las configuraciones para fondo transparente y sin controles
-  const iframeUrl = `https://sketchfab.com/models/${SKETCHFAB_MODEL_UID}/embed?autostart=1&annotations_visible=0&annotation=1&transparent=1&ui_animations=1&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0`
+  const iframeUrl = `https://sketchfab.com/models/${SKETCHFAB_MODEL_UID}/embed?annotations_visible=0&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0`
 
   return (
     <Section id="reparacion" variant="secondary" className={styles.repairMaintenance}>
+      {/* Efecto de cáusticas (reflejos de luz en el agua) */}
+      <div className={styles.caustics} />
+      
+      {/* Burbujas animadas */}
+      <div className={styles.bubbles}>
+        {[...Array(12)].map((_, i) => (
+          <div key={`bubble-${i}`} className={styles.bubble} />
+        ))}
+      </div>
+      
+      {/* Partículas flotantes */}
+      <div className={styles.particles}>
+        {[...Array(30)].map((_, i) => (
+          <div 
+            key={`particle-${i}`} 
+            className={styles.particle}
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${10 + Math.random() * 6}s`
+            }}
+          />
+        ))}
+      </div>
+      
       <Container>
         <div className={styles.header}>
           <h2 className={styles.title}>
