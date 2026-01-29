@@ -11,7 +11,7 @@ import { WHATSAPP_NUMBER } from '../../../constants'
 import type { Washer } from '../../../types/washer'
 import styles from './Sell.module.css'
 
-import backgroundImage from '../../../assets/bg/Generated Image January 03, 2026 - 7_40PM.png'
+import backgroundImage from '../../../assets/bg/daeva-miles-zjasO1yZ6hQ-unsplash.jpg'
 
 export const Sell = () => {
   const { washers, loading } = useWashers()
