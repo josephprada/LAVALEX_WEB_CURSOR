@@ -11,7 +11,7 @@ import { WHATSAPP_NUMBER } from '../../../constants'
 import type { Washer } from '../../../types/washer'
 import styles from './Sell.module.css'
 
-import backgroundImage from '../../../assets/bg/daeva-miles-zjasO1yZ6hQ-unsplash.jpg'
+import backgroundImage from '../../../assets/bg/bg-user.webp'
 
 export const Sell = () => {
   const { washers, loading } = useWashers()
@@ -100,7 +100,14 @@ export const Sell = () => {
                 >
                   {getCurrentImage(washer) ? (
                     <>
-                      <img src={getCurrentImage(washer)} alt={`${washer.brand} ${washer.model}`} className={styles.washerImg} />
+                      <img
+                        src={getCurrentImage(washer) ?? ''}
+                        alt={`${washer.brand} ${washer.model}`}
+                        className={styles.washerImg}
+                        width={400}
+                        height={500}
+                        loading="lazy"
+                      />
                       {washer.image_urls && washer.image_urls.length > 0 && (
                         <>
                           <div className={styles.expandIcon} onClick={(e) => { e.stopPropagation(); handleImageClick(washer.id); }}>
@@ -166,19 +173,21 @@ export const Sell = () => {
 
         {!loading && washers.length === 0 && (
           <div className={styles.emptyState}>
-            <p className={styles.emptyText}>
-              Próximamente tendremos más lavadoras disponibles. Contáctanos para conocer nuestro inventario actual.
-            </p>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => {
-                const message = encodeURIComponent('Hola, me gustaría conocer las lavadoras disponibles')
-                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
-              }}
-            >
-              Contactar por WhatsApp
-            </Button>
+            <div className={styles.emptyStateCard}>
+              <p className={styles.emptyText}>
+                Próximamente tendremos más lavadoras disponibles. Contáctanos para conocer nuestro inventario actual.
+              </p>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => {
+                  const message = encodeURIComponent('Hola, me gustaría conocer las lavadoras disponibles')
+                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')
+                }}
+              >
+                Contactar por WhatsApp
+              </Button>
+            </div>
           </div>
         )}
 

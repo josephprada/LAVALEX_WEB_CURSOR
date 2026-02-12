@@ -69,6 +69,9 @@ export const WasherList = ({ washers, onEdit, onRefresh, loading }: WasherListPr
                   src={washer.image_urls[0]}
                   alt={`${washer.brand} ${washer.model}`}
                   className={styles.image}
+                  width={300}
+                  height={200}
+                  loading="lazy"
                 />
               ) : (
                 <div className={styles.placeholderImage}>🔄</div>

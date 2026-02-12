@@ -99,6 +99,8 @@ export const Modal = ({ isOpen, onClose, images, initialIndex = 0, title }: Moda
             src={images[currentIndex]}
             alt={`Imagen ${currentIndex + 1} de ${images.length}`}
             className={`${styles.image} ${isTransitioning ? styles.fadeOut : styles.fadeIn}`}
+            width={800}
+            height={600}
           />
 
           {images.length > 1 && (

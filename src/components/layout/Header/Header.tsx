@@ -37,7 +37,7 @@ export const Header = () => {
           <Container>
             <div className={styles.content}>
               <div className={styles.logo} onClick={() => handleNavClick('#inicio')}>
-                <img src={logoIcon} alt="LAVALEX Logo" className={styles.logoIcon} />
+                <img src={logoIcon} alt="LAVALEX Logo" className={styles.logoIcon} width={40} height={40} />
                 <span className={styles.logoText}>
                   <GradientText colors={['#00BFFF', '#1E90FF', '#0066CC', '#00CED1']}>LAVALEX</GradientText>
                 </span>

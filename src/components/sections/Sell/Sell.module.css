@@ -265,9 +265,21 @@
   padding: var(--spacing-4xl) var(--spacing-lg);
 }
 
+.emptyStateCard {
+  display: inline-block;
+  background: rgba(10, 25, 49, 0.603);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(4, 2, 24, 0.548);
+}
+
 .emptyText {
   font-size: var(--font-size-lg);
-  color: var(--color-text-light);
+  color: var(--color-white);
   margin-bottom: var(--spacing-2xl);
   max-width: 600px;
   margin-left: auto;

@@ -4,8 +4,9 @@ import { Section } from '../../ui/Section/Section'
 import SplitText from 'react-bits/src/content/TextAnimations/SplitText/SplitText'
 import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
 import { WHATSAPP_NUMBER } from '../../../constants'
-import logoWashingMachine from '../../../assets/logos/Mesa de trabajo 2 copia.svg'
 import styles from './Hero.module.css'
+
+const LOGO_HERO_SRC = '/logo-hero.svg'
 
 export const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -87,9 +88,12 @@ export const Hero = () => {
             <AnimatedContent delay={0.2} direction="horizontal" distance={100}>
               <div className={styles.washingMachine}>
                 <img
-                  src={logoWashingMachine}
+                  src={LOGO_HERO_SRC}
                   alt="Lavadora LAVALEX"
                   className={styles.logoImage}
+                  width={600}
+                  height={700}
+                  fetchPriority="high"
                 />
               </div>
             </AnimatedContent>

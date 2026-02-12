@@ -18,10 +18,12 @@ export const NotFound404 = () => {
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles.imageWrapper}>
-              <img 
-                src={errorImage} 
-                alt="404 Error - Página no encontrada" 
+              <img
+                src={errorImage}
+                alt="404 Error - Página no encontrada"
                 className={styles.errorImage}
+                width={400}
+                height={300}
               />
             </div>
             
