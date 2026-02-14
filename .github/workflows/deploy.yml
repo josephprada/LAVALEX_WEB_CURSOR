@@ -1,3 +1,4 @@
+# Deploy to GitHub Pages on every push to main (or manual run)
 name: Deploy to GitHub Pages
 
 on:
