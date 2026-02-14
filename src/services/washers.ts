@@ -2,8 +2,10 @@ import { supabase } from '../lib/supabase'
 import type { Washer, WasherFormData } from '../types/washer'
 
 const BUCKET_NAME = 'washer-images'
+const NO_SUPABASE_ERROR = new Error('Servicio no configurado. Configura las variables de entorno de Supabase.')
 
 export const getWashers = async (): Promise<{ data: Washer[] | null; error: Error | null }> => {
+  if (!supabase) return { data: null, error: NO_SUPABASE_ERROR }
   try {
     const { data, error } = await supabase
       .from('washers')
@@ -21,6 +23,7 @@ export const getWashers = async (): Promise<{ data: Washer[] | null; error: Erro
 }
 
 export const createWasher = async (formData: WasherFormData): Promise<{ data: Washer | null; error: Error | null }> => {
+  if (!supabase) return { data: null, error: NO_SUPABASE_ERROR }
   try {
     // Primero crear la lavadora sin imágenes
     const { data: washerData, error: washerError } = await supabase
@@ -88,6 +91,7 @@ export const updateWasher = async (
   existingImageUrls: string[] = [],
   imagesToRemove: string[] = []
 ): Promise<{ data: Washer | null; error: Error | null }> => {
+  if (!supabase) return { data: null, error: NO_SUPABASE_ERROR }
   try {
     // Eliminar imágenes que se removieron
     if (imagesToRemove.length > 0) {
@@ -137,6 +141,7 @@ export const updateWasher = async (
 }
 
 export const deleteWasher = async (id: string, imageUrls: string[]): Promise<{ error: Error | null }> => {
+  if (!supabase) return { error: NO_SUPABASE_ERROR }
   try {
     // Eliminar todas las imágenes del Storage
     if (imageUrls.length > 0) {
@@ -162,6 +167,7 @@ export const deleteWasher = async (id: string, imageUrls: string[]): Promise<{ e
 }
 
 export const uploadWasherImage = async (file: File, washerId: string): Promise<string | null> => {
+  if (!supabase) return null
   try {
     const fileExt = file.name.split('.').pop()
     const fileName = `${washerId}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
@@ -210,6 +216,7 @@ export const uploadWasherImage = async (file: File, washerId: string): Promise<s
 }
 
 export const deleteWasherImage = async (url: string): Promise<{ error: Error | null }> => {
+  if (!supabase) return { error: NO_SUPABASE_ERROR }
   try {
     // Extraer el path del archivo de la URL
     const urlObj = new URL(url)

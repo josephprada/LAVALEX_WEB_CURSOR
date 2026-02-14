@@ -6,7 +6,7 @@ import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/A
 import { WHATSAPP_NUMBER } from '../../../constants'
 import styles from './Hero.module.css'
 
-const LOGO_HERO_SRC = '/logo-hero.svg'
+const LOGO_HERO_SRC = `${import.meta.env.BASE_URL}logo-hero.svg`
 
 export const Hero = () => {
   const scrollToSection = (id: string) => {
