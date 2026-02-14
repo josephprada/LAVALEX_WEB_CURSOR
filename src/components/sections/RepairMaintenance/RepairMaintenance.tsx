@@ -40,17 +40,11 @@ export const RepairMaintenance = () => {
 
         client.init(SKETCHFAB_MODEL_UID, {
           success: (apiInstance: SketchfabAPI) => {
-            console.log('Sketchfab API initialized')
-
             apiInstance.addEventListener('viewerready', () => {
-              console.log('Sketchfab viewer ready')
-
               if (typeof apiInstance.gotoAnnotation === 'function') {
-                console.log('gotoAnnotation method available')
                 setTimeout(() => {
                   setApi(apiInstance)
                   setIsViewerReady(true)
-                  console.log('API ready for use')
                 }, 1500)
               } else {
                 console.error('gotoAnnotation method not available')
@@ -236,8 +230,7 @@ export const RepairMaintenance = () => {
                   src={iframeUrl}
                   title="LAVADORA_ZOU_20_KG_2"
                   frameBorder="0"
-                  allow="autoplay; fullscreen; xr-spatial-tracking"
-                  allowFullScreen
+                  allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope"
                   className={styles.sketchfabIframe}
                   style={{ background: 'transparent' }}
                   width={800}

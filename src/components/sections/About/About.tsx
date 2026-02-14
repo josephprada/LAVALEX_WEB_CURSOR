@@ -62,7 +62,7 @@ export const About = () => {
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
-                  allowFullScreen
+                  allow="fullscreen"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className={styles.map}
