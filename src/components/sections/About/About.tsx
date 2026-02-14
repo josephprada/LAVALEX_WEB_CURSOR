@@ -7,7 +7,7 @@ import FadeContent from 'react-bits/src/content/Animations/FadeContent/FadeConte
 import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
 import ProfileCard from '../../ui/ProfileCard/ProfileCard'
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from '../../../constants'
-import expertImage from '../../../assets/photo.png'
+import expertImage from '../../../assets/photo.PNG'
 import grainUrl from '../../../assets/profile-card/grain.webp'
 import styles from './About.module.css'
 

@@ -8,7 +8,6 @@ const base = process.env.VITE_BASE_PATH ?? '/'
 export default defineConfig({
   base,
   plugins: [react()],
-  base: '/LAVALEX_WEB_CURSOR/',
   css: {
     modules: {
       localsConvention: 'camelCase',
