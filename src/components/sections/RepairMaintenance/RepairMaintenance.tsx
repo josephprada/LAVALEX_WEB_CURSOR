@@ -21,6 +21,7 @@ interface SketchfabAPI {
 }
 
 const SKETCHFAB_MODEL_UID = 'c97197b3a6d64f78bb58404d29cf6a25'
+const SKETCHFAB_SCRIPT_URL = 'https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js'
 
 export const RepairMaintenance = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -29,7 +30,6 @@ export const RepairMaintenance = () => {
   const [loadingError, setLoadingError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Wait for Sketchfab script to load
     const initSketchfab = () => {
       if (!window.Sketchfab || !iframeRef.current) {
         return
@@ -41,15 +41,12 @@ export const RepairMaintenance = () => {
         client.init(SKETCHFAB_MODEL_UID, {
           success: (apiInstance: SketchfabAPI) => {
             console.log('Sketchfab API initialized')
-            
-            // Wait for viewer to be ready
+
             apiInstance.addEventListener('viewerready', () => {
               console.log('Sketchfab viewer ready')
-              
-              // Verify API methods are available
+
               if (typeof apiInstance.gotoAnnotation === 'function') {
                 console.log('gotoAnnotation method available')
-                // Add a delay to ensure everything is fully initialized
                 setTimeout(() => {
                   setApi(apiInstance)
                   setIsViewerReady(true)
@@ -60,14 +57,27 @@ export const RepairMaintenance = () => {
                 setLoadingError('Error: La API no está completamente cargada.')
               }
             })
-            
-            // Start the viewer after setting up the listener
+
             apiInstance.start()
           },
           error: (error: any) => {
             console.error('Sketchfab init error:', error)
             setLoadingError('Error al cargar el modelo 3D. Por favor, recarga la página.')
           },
+          annotations_visible: 0,
+          transparent: 1,
+          ui_animations: 0,
+          ui_infos: 0,
+          ui_stop: 0,
+          ui_inspector: 0,
+          ui_watermark_link: 0,
+          ui_watermark: 0,
+          ui_ar: 0,
+          ui_help: 0,
+          ui_settings: 0,
+          ui_vr: 0,
+          ui_fullscreen: 0,
+          ui_annotations: 0
         })
       } catch (error) {
         setLoadingError('Error al inicializar el visor 3D.')
@@ -75,32 +85,66 @@ export const RepairMaintenance = () => {
       }
     }
 
-    // Wait a bit for iframe to start loading, then initialize
-    const initTimer = setTimeout(() => {
-      // Check if Sketchfab is already loaded
+    const runWhenReady = () => {
       if (window.Sketchfab && iframeRef.current) {
         initSketchfab()
-      } else {
-        // Wait for script to load
-        const checkSketchfab = setInterval(() => {
-          if (window.Sketchfab && iframeRef.current) {
-            clearInterval(checkSketchfab)
-            initSketchfab()
-          }
-        }, 100)
+        return true
+      }
+      return false
+    }
 
-        // Cleanup after 10 seconds if still not loaded
-        setTimeout(() => {
-          clearInterval(checkSketchfab)
-          if (!window.Sketchfab) {
+    const loadSketchfabScript = (): Promise<void> => {
+      if (window.Sketchfab) {
+        return Promise.resolve()
+      }
+      const existing = document.querySelector(`script[src="${SKETCHFAB_SCRIPT_URL}"]`)
+      if (existing) {
+        return new Promise((resolve) => {
+          const check = setInterval(() => {
+            if (window.Sketchfab) {
+              clearInterval(check)
+              resolve()
+            }
+          }, 50)
+        })
+      }
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = SKETCHFAB_SCRIPT_URL
+        script.async = true
+        script.onload = () => resolve()
+        script.onerror = () => reject(new Error('Sketchfab script failed to load'))
+        document.head.appendChild(script)
+      })
+    }
+
+    let cancelled = false
+    const initTimer = setTimeout(() => {
+      loadSketchfabScript()
+        .then(() => {
+          if (cancelled) return
+          if (!runWhenReady()) {
+            const checkInterval = setInterval(() => {
+              if (cancelled) {
+                clearInterval(checkInterval)
+                return
+              }
+              if (runWhenReady()) {
+                clearInterval(checkInterval)
+              }
+            }, 100)
+            setTimeout(() => clearInterval(checkInterval), 10000)
+          }
+        })
+        .catch(() => {
+          if (!cancelled) {
             setLoadingError('Error al cargar el visor 3D. Por favor, recarga la página.')
           }
-        }, 10000)
-      }
-    }, 1000) // Wait 1 second for iframe to start loading
+        })
+    }, 500)
 
-    // Cleanup function
     return () => {
+      cancelled = true
       clearTimeout(initTimer)
     }
   }, [])
@@ -134,10 +178,33 @@ export const RepairMaintenance = () => {
   }
 
   // URL con todas las configuraciones para fondo transparente y sin controles
-  const iframeUrl = `https://sketchfab.com/models/${SKETCHFAB_MODEL_UID}/embed?autostart=1&annotations_visible=0&annotation=1&transparent=1&ui_animations=1&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0`
+  const iframeUrl = `https://sketchfab.com/models/${SKETCHFAB_MODEL_UID}/embed?annotations_visible=0&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0`
 
   return (
     <Section id="reparacion" variant="secondary" className={styles.repairMaintenance}>
+      {/* Fondo animado comentado para mejorar rendimiento */}
+      {/* <div className={styles.caustics} /> */}
+      {/* <div className={styles.bubbles}>
+        {[...Array(12)].map((_, i) => (
+          <div key={`bubble-${i}`} className={styles.bubble} />
+        ))}
+      </div> */}
+      {/* <div className={styles.particles}>
+        {[...Array(30)].map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className={styles.particle}
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${10 + Math.random() * 6}s`
+            }}
+          />
+        ))}
+      </div> */}
+      {/* Fondo simple estático (sin animaciones) */}
+      <div className={styles.simpleBg} />
+
       <Container>
         <div className={styles.header}>
           <h2 className={styles.title}>
@@ -173,6 +240,8 @@ export const RepairMaintenance = () => {
                   allowFullScreen
                   className={styles.sketchfabIframe}
                   style={{ background: 'transparent' }}
+                  width={800}
+                  height={450}
                 />
               </>
             )}

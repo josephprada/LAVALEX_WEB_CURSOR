@@ -51,6 +51,7 @@
 
 .mapContainer {
   width: 100%;
+  min-height: 300px;
   margin: var(--spacing-xl) 0;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
