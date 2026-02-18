@@ -180,6 +180,7 @@ export const Sell = () => {
               <Button 
                 variant="outline" 
                 size="lg"
+                className={styles.emptyStateButton}
                 onClick={() => {
                   const message = encodeURIComponent('Hola, me gustaría conocer las lavadoras disponibles')
                   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank')

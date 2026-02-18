@@ -2,6 +2,38 @@
   padding-top: 20px;
 }
 
+/* Modo claro: fondo celeste vivo, no tan blanco */
+:global([data-theme='light']) .about {
+  background: linear-gradient(
+    160deg,
+    #d4eef9 0%,
+    #b8e4f2 25%,
+    #9ed9eb 45%,
+    #b0dff0 65%,
+    #c8eaf6 85%,
+    #e0f5fb 100%
+  );
+  position: relative;
+}
+
+:global([data-theme='light']) .about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 75% 30%,
+    rgba(100, 181, 246, 0.25) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global([data-theme='light']) .about > * {
+  position: relative;
+  z-index: 1;
+}
+
 .content {
   display: grid;
   grid-template-columns: minmax(300px, 400px) 1fr;
@@ -148,6 +180,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* En móvil no captura toques: prioriza el scroll de la página */
+    pointer-events: none;
   }
 
   .stats {

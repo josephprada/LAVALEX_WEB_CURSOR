@@ -151,6 +151,17 @@
   margin: 0 auto;
 }
 
+/* Modo claro: fondo celeste (paleta logo) para quitar blanco plano */
+:global([data-theme='light']) .faq {
+  background: linear-gradient(
+    150deg,
+    #e0f5fb 0%,
+    #c8eaf6 30%,
+    #b0dff0 60%,
+    #d4eef9 100%
+  );
+}
+
 @media (max-width: 768px) {
   .faq {
     padding-top: 50px;

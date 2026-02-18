@@ -98,6 +98,12 @@ El proyecto está listo para desplegar en cualquier plataforma que soporte aplic
 - GitHub Pages
 - AWS Amplify
 
+### Despliegue en VPS (n8n u otro)
+
+Guía paso a paso para subir la landing a un VPS, configurar dominio y HTTPS: **[docs/DEPLOY-VPS-N8N.md](docs/DEPLOY-VPS-N8N.md)**.
+
+Resumen de lo que se hizo para activar SSL con Certbot en el VPS: **[docs/SSL-CERTBOT-VPS.md](docs/SSL-CERTBOT-VPS.md)**.
+
 ## 📄 Licencia
 
 Todos los derechos reservados © 2024 LAVALEX

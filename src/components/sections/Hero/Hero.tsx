@@ -4,6 +4,7 @@ import { Section } from '../../ui/Section/Section'
 import SplitText from 'react-bits/src/content/TextAnimations/SplitText/SplitText'
 import AnimatedContent from 'react-bits/src/content/Animations/AnimatedContent/AnimatedContent'
 import { WHATSAPP_NUMBER } from '../../../constants'
+import heroPersonImg from '../../../assets/bg/hero-person.png'
 import styles from './Hero.module.css'
 
 const LOGO_HERO_SRC = `${import.meta.env.BASE_URL}logo-hero.svg`
@@ -39,6 +40,16 @@ export const Hero = () => {
           <div className={styles.wave}></div>
           <div className={styles.wave}></div>
         </div>
+      </div>
+      <div className={styles.heroPerson} aria-hidden="true">
+        <img
+          src={heroPersonImg}
+          alt=""
+          className={styles.heroPersonImage}
+          width={500}
+          height={700}
+          fetchPriority="high"
+        />
       </div>
       <Container>
         <div className={styles.content}>

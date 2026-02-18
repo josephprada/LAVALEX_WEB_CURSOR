@@ -62,3 +62,31 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* Modo claro: acordeón en celeste (paleta del logo) */
+:global([data-theme='light']) .item {
+  background: rgba(0, 191, 255, 0.08);
+  border-color: rgba(0, 191, 255, 0.4);
+}
+
+:global([data-theme='light']) .question {
+  background: rgba(0, 191, 255, 0.06);
+  color: #0066cc;
+}
+
+:global([data-theme='light']) .question:hover {
+  background: rgba(0, 191, 255, 0.14);
+}
+
+:global([data-theme='light']) .question.open {
+  background: rgba(0, 191, 255, 0.12);
+  border-bottom-color: rgba(0, 30, 144, 0.35);
+}
+
+:global([data-theme='light']) .icon {
+  color: #1e90ff;
+}
+
+:global([data-theme='light']) .answer {
+  color: var(--color-text-secondary);
+}
+

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaFacebook, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
+import { FaEnvelope, FaFacebook, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 import GradientText from 'react-bits/src/content/TextAnimations/GradientText/GradientText'
 import { Container } from '../Container/Container'
 import { AdminLogin } from '../../admin/AdminLogin/AdminLogin'
@@ -75,6 +75,13 @@ export const Footer = () => {
                 aria-label="WhatsApp"
               >
                 <FaWhatsapp />
+              </a>
+              <a
+                href="mailto:alquilerlavalex@gmail.com"
+                className={styles.socialLink}
+                aria-label="Enviar correo a Gmail"
+              >
+                <FaEnvelope />
               </a>
             </div>
           </div>

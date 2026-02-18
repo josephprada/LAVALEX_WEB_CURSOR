@@ -150,6 +150,15 @@
   min-height: 0;
   align-items: flex-start;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+}
+
+.annotationContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
 }
 
 .annotationItem:hover {
@@ -181,13 +190,6 @@
   line-height: 1;
 }
 
-.annotationContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
 .annotationTitle {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
@@ -201,6 +203,27 @@
   color: var(--color-text-light);
   line-height: var(--line-height-relaxed);
   margin: 0;
+}
+
+/* Modo claro: cards con fondo claro y texto oscuro para buen contraste */
+:global([data-theme='light']) .annotationItem {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--color-border-secondary);
+  box-shadow: 0 4px 20px rgba(0, 56, 122, 0.12);
+}
+
+:global([data-theme='light']) .annotationItem:hover {
+  background: #ffffff;
+  border-color: var(--color-text-link);
+  box-shadow: 0 8px 24px rgba(0, 56, 122, 0.18);
+}
+
+:global([data-theme='light']) .annotationTitle {
+  color: var(--color-text-primary);
+}
+
+:global([data-theme='light']) .annotationDescription {
+  color: var(--color-text-secondary);
 }
 
 /* ========== Fondo animado comentado (mejor rendimiento) ========== */
@@ -228,6 +251,17 @@
     min-height: 500px;
   }
 
+  /* Lista de anotaciones crece con el contenido; las cards no comparten altura fija */
+  .annotationsList {
+    height: auto;
+    min-height: 0;
+  }
+
+  .annotationItem {
+    flex: 0 0 auto;
+    min-height: 0;
+  }
+
   /* (burbujas/partículas comentadas para rendimiento) */
 }
 
@@ -242,10 +276,13 @@
 
   .modelViewer {
     min-height: 400px;
+    /* En móvil no captura toques: prioriza el scroll de la página */
+    /*pointer-events: none;*/
   }
 
   .sketchfabIframe {
     min-height: 400px;
+    /*pointer-events: none;*/
   }
 
   .errorMessage,
@@ -253,8 +290,24 @@
     min-height: 400px;
   }
 
+  .annotationsList {
+    height: auto;
+    min-height: 0;
+  }
+
   .annotationItem {
+    flex: 0 0 auto;
+    min-height: 0;
     padding: var(--spacing-md);
+  }
+
+  .annotationContent {
+    min-width: 0;
+  }
+
+  .annotationDescription {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .annotationNumber {
