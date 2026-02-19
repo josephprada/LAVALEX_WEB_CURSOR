@@ -104,6 +104,8 @@ Guía paso a paso para subir la landing a un VPS, configurar dominio y HTTPS: **
 
 Resumen de lo que se hizo para activar SSL con Certbot en el VPS: **[docs/SSL-CERTBOT-VPS.md](docs/SSL-CERTBOT-VPS.md)**.
 
+Despliegue automático al VPS con GitHub Actions (push a main): **[docs/DEPLOY-VPS-GITHUB-ACTIONS.md](docs/DEPLOY-VPS-GITHUB-ACTIONS.md)**.
+
 ## 📄 Licencia
 
 Todos los derechos reservados © 2024 LAVALEX
